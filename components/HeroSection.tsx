@@ -39,8 +39,6 @@ export default function HeroSection() {
           </div>
 
           <div className="hero-index" aria-hidden="true">
-            <span>DS — 001</span>
-            <span>MODELING THE UNSEEN</span>
           </div>
         </div>
 
