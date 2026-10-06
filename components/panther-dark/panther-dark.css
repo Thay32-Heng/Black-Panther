@@ -4,6 +4,8 @@
   background: #000;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+  --header-h: 108px;
+  --hud-gutter: clamp(20px, 4vw, 72px);
 }
 
 * {
@@ -37,6 +39,10 @@ section[tabindex="-1"]:focus {
 }
 
 @media (max-width: 800px) {
+  :root {
+    --header-h: 84px;
+  }
+
   section[id],
   article[id],
   #content {
@@ -328,7 +334,9 @@ a {
   position: relative;
   z-index: 1;
   width: 100%;
-  min-height: calc(100dvh - 108px);
+  min-height: 100dvh;
+  margin-top: calc(-1 * var(--header-h));
+  padding-top: var(--header-h);
   overflow: hidden;
   isolation: isolate;
   background: #000;
@@ -560,6 +568,214 @@ h1 em {
 .particle-readout-bottom {
   bottom: 8%;
   left: 4%;
+}
+
+/* ── Hero HUD + interactive layer ─────────────────────────────── */
+
+.hero-spotlight {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: radial-gradient(
+    560px circle at var(--mx, 50%) var(--my, 34%),
+    rgba(255, 107, 0, 0.12),
+    transparent 62%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 600ms ease;
+}
+
+.hero[data-pointer="true"] .hero-spotlight {
+  opacity: 1;
+}
+
+.hero-hud {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+  transition: opacity 320ms ease;
+}
+
+.hero[data-hud="hidden"] .hero-hud,
+.hero[data-hud="hidden"] .hero-index {
+  opacity: 0;
+}
+
+.hero-index {
+  transition: opacity 320ms ease;
+}
+
+.hud-corner {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border: 0 solid rgba(255, 107, 0, 0.5);
+}
+
+.hud-corner-tl {
+  top: calc(var(--header-h) + 22px);
+  left: var(--hud-gutter);
+  border-top-width: 1px;
+  border-left-width: 1px;
+}
+
+.hud-corner-tr {
+  top: calc(var(--header-h) + 22px);
+  right: var(--hud-gutter);
+  border-top-width: 1px;
+  border-right-width: 1px;
+}
+
+.hud-corner-bl {
+  bottom: 34px;
+  left: var(--hud-gutter);
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+}
+
+.hud-corner-br {
+  bottom: 34px;
+  right: var(--hud-gutter);
+  border-bottom-width: 1px;
+  border-right-width: 1px;
+}
+
+.hud-label {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: #8c8c88;
+  font-family: var(--font-dm-mono), monospace;
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.hud-label strong {
+  color: #ff6b00;
+  font-weight: 500;
+}
+
+.hud-label-tl {
+  top: calc(var(--header-h) + 26px);
+  left: calc(var(--hud-gutter) + 20px);
+}
+
+.hud-label-tr {
+  top: calc(var(--header-h) + 26px);
+  right: calc(var(--hud-gutter) + 20px);
+  align-items: flex-end;
+  text-align: right;
+}
+
+.hud-label-bl {
+  bottom: 38px;
+  left: calc(var(--hud-gutter) + 20px);
+}
+
+.hud-label-br {
+  bottom: 38px;
+  right: calc(var(--hud-gutter) + 20px);
+  align-items: flex-end;
+  text-align: right;
+}
+
+.hud-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #e8e7e3;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.14em;
+}
+
+.hud-value {
+  color: #ff6b00;
+}
+
+.hud-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ff6b00;
+  box-shadow: 0 0 10px rgba(255, 107, 0, 0.75);
+  animation: hud-pulse 2.4s ease-in-out infinite;
+}
+
+.hero-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  transform: perspective(1200px) rotateX(calc(var(--py, 0) * -5deg))
+    rotateY(calc(var(--px, 0) * 7deg))
+    translate3d(calc(var(--px, 0) * 12px), calc(var(--py, 0) * 9px), 0);
+  transform-style: preserve-3d;
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.hero-orbit {
+  position: absolute;
+  inset: 5%;
+  z-index: -1;
+  border: 1px dashed rgba(255, 107, 0, 0.16);
+  border-radius: 50%;
+  animation: hero-orbit 28s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes hero-orbit {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes hud-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@media (max-width: 800px) {
+  .hud-corner-bl,
+  .hud-corner-br,
+  .hud-label-bl,
+  .hud-label-br {
+    display: none;
+  }
+
+  .hud-label-tr {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-stage {
+    transition: none;
+    transform: none;
+  }
+
+  .hero-orbit,
+  .hud-dot {
+    animation: none;
+  }
 }
 
 @keyframes panther-signal {
@@ -4507,7 +4723,7 @@ h1 em {
   }
 
   .hero {
-    min-height: calc(100dvh - 84px);
+    min-height: 100dvh;
   }
 
   .hero-content {

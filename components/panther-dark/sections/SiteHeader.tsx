@@ -32,9 +32,13 @@ export default function SiteHeader() {
       setScrolled(window.scrollY > stickyThreshold)
 
       let current: string | null = null
+      let closestTop = Number.NEGATIVE_INFINITY
       for (const item of NAV_ITEMS) {
         const section = document.getElementById(item.id)
-        if (section && section.getBoundingClientRect().top <= 160) {
+        if (!section) continue
+        const top = section.getBoundingClientRect().top
+        if (top <= 160 && top > closestTop) {
+          closestTop = top
           current = item.id
         }
       }

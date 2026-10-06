@@ -68,7 +68,6 @@ a {
   width: min(100% - 96px, 1380px);
   height: 108px;
   margin: 0 auto;
-  border-bottom: 1px solid #282828;
 }
 
 .brand {
