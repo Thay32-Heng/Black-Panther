@@ -1,6 +1,6 @@
 export default function ContactSection() {
   return (
-          <section className="contact" aria-labelledby="contact-title">
+          <section className="contact" id="contact" tabIndex={-1} aria-labelledby="contact-title">
         <div className="contact-orbit contact-orbit-one" aria-hidden="true" />
         <div className="contact-orbit contact-orbit-two" aria-hidden="true" />
 
@@ -19,7 +19,7 @@ export default function ContactSection() {
               className="contact-button contact-button-secondary"
               href="https://www.linkedin.com"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               <span>LinkedIn</span>
               <span aria-hidden="true">↗</span>
@@ -35,7 +35,7 @@ export default function ContactSection() {
               className="contact-button contact-button-secondary"
               href="https://github.com"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               <span>GitHub</span>
               <span aria-hidden="true">↗</span>
@@ -51,7 +51,7 @@ export default function ContactSection() {
         <footer className="site-footer">
           <span>© 2025 DATA SYSTEMS</span>
           <span>ENGINEERED WITH INTENT</span>
-          <a href="#">RETURN TO ORIGIN ↑</a>
+          <a href="#content">RETURN TO ORIGIN ↑</a>
         </footer>
       </section>
   )

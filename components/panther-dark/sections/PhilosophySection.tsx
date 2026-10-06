@@ -2,7 +2,7 @@ import { engineeringPrinciples } from "../data"
 
 export default function PhilosophySection() {
   return (
-          <section className="philosophy" aria-labelledby="philosophy-title">
+          <section className="philosophy" id="philosophy" aria-labelledby="philosophy-title">
         <div className="philosophy-inner">
           <header className="philosophy-heading">
             <p className="philosophy-overline">/ The Philosophy</p>

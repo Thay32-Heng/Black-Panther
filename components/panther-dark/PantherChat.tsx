@@ -1,13 +1,49 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import type * as React from "react"
 import PantherMark from "./PantherMark"
 
 export default function PantherChat() {
   const [isOpen, setIsOpen] = useState(false)
+  const [showToggle, setShowToggle] = useState(false)
   const [query, setQuery] = useState("")
   const [userMessage, setUserMessage] = useState("Does he know Python and AWS?")
+  const toggleRef = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    const updateVisibility = () => {
+      setShowToggle(window.scrollY > window.innerHeight * 0.6)
+    }
+
+    updateVisibility()
+    window.addEventListener("scroll", updateVisibility, { passive: true })
+    window.addEventListener("resize", updateVisibility)
+
+    return () => {
+      window.removeEventListener("scroll", updateVisibility)
+      window.removeEventListener("resize", updateVisibility)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!isOpen) return
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsOpen(false)
+        toggleRef.current?.focus()
+      }
+    }
+
+    document.addEventListener("keydown", onKeyDown)
+    return () => document.removeEventListener("keydown", onKeyDown)
+  }, [isOpen])
+
+  function closeChat() {
+    setIsOpen(false)
+    toggleRef.current?.focus()
+  }
 
   function submitQuery(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -20,7 +56,11 @@ export default function PantherChat() {
   }
 
   return (
-    <aside className="panther-chat" aria-label="Panther AI assistant">
+    <aside
+      className="panther-chat"
+      data-visible={showToggle || isOpen ? "true" : "false"}
+      aria-label="Panther AI assistant"
+    >
       {isOpen && (
         <div className="chat-window">
           <span className="chat-corner chat-corner-top" aria-hidden="true" />
@@ -40,7 +80,7 @@ export default function PantherChat() {
               className="chat-close"
               type="button"
               aria-label="Close Panther AI"
-              onClick={() => setIsOpen(false)}
+              onClick={closeChat}
             >
               ×
             </button>
@@ -93,6 +133,7 @@ export default function PantherChat() {
           {isOpen ? "SHADOW ACTIVE" : "SUMMON SHADOW"}
         </span>
         <button
+          ref={toggleRef}
           className="chat-toggle"
           type="button"
           aria-label={isOpen ? "Close Panther AI" : "Open Panther AI"}

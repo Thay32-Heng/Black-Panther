@@ -2,7 +2,7 @@ import { experienceTimeline } from "../data"
 
 export default function ExperienceSection() {
   return (
-          <section className="experience" aria-labelledby="experience-title">
+          <section className="experience" id="experience" tabIndex={-1} aria-labelledby="experience-title">
         <div className="experience-inner">
           <header className="experience-heading">
             <p className="experience-overline">/ The Evolution</p>

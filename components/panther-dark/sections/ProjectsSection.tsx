@@ -3,7 +3,7 @@ import { ProjectVisual } from "../ProjectVisual"
 
 export default function ProjectsSection() {
   return (
-          <section className="projects" aria-labelledby="projects-title">
+          <section className="projects" id="projects" tabIndex={-1} aria-labelledby="projects-title">
         <div className="projects-inner">
           <header className="projects-heading">
             <p className="projects-overline">/ Battle-Tested Projects</p>
@@ -55,12 +55,16 @@ export default function ProjectsSection() {
                   </dl>
 
                   <div className="project-actions">
-                    <a href="https://github.com" target="_blank" rel="noreferrer">
+                    <a
+                      href="https://github.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       View Code
                       <span aria-hidden="true">↗</span>
                     </a>
                     <a href="#sandbox">
-                      Live Demo
+                      View Demo
                       <span aria-hidden="true">→</span>
                     </a>
                   </div>

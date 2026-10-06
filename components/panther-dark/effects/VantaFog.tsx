@@ -3,7 +3,9 @@
 import { useEffect, useRef } from "react"
 import FOG from "vanta/dist/vanta.fog.min"
 
-type ThreeRuntime = typeof import("three")
+type ThreeRuntime = {
+  Color: new (...args: unknown[]) => unknown
+}
 
 declare global {
   interface Window {
@@ -91,7 +93,10 @@ export default function VantaFog() {
       })
     }
 
-    void initializeFog()
+    // If the WebGL runtime fails, keep the static panther visible and stay silent.
+    void initializeFog().catch(() => {
+      fogEffectRef.current = null
+    })
 
     return () => {
       fogInitializationRef.current += 1

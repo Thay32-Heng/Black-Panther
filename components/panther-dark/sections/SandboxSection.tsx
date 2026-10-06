@@ -2,14 +2,14 @@ import InteractiveChart from "../InteractiveChart"
 
 export default function SandboxSection() {
   return (
-          <section className="sandbox" id="sandbox" aria-labelledby="sandbox-title">
+          <section className="sandbox" id="sandbox" tabIndex={-1} aria-labelledby="sandbox-title">
         <div className="sandbox-inner">
           <header className="sandbox-heading">
             <p className="sandbox-overline">/ The Sandbox</p>
             <h2 id="sandbox-title">Data in Motion.</h2>
             <p className="sandbox-intro">
-              Don&apos;t just take my word for it. Interact with the live data model
-              below to see how I extract signals from the noise.
+              Don&apos;t just take my word for it. Interact with the sample data
+              model below to see how I extract signals from the noise.
             </p>
           </header>
 

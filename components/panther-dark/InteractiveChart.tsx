@@ -34,7 +34,7 @@ export default function InteractiveChart() {
         <div className="dashboard-id">
           <span className="live-indicator" />
           <div>
-            <span>LIVE MODEL</span>
+            <span>SAMPLE MODEL</span>
             <strong>Signal Extraction Index</strong>
           </div>
         </div>
@@ -84,93 +84,104 @@ export default function InteractiveChart() {
           <span>0</span>
         </div>
 
-        <svg
-          className="data-chart"
-          viewBox={`0 0 ${chartWidth} ${chartHeight}`}
-          role="img"
-          aria-label={`${period} signal extraction trend, currently ${values[values.length - 1]} percent`}
-        >
-          <defs>
-            <linearGradient id="chartArea" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#FF6B00" stopOpacity="0.2" />
-              <stop offset="100%" stopColor="#FF6B00" stopOpacity="0" />
-            </linearGradient>
-            <filter id="lineGlow" x="-20%" y="-30%" width="140%" height="160%">
-              <feGaussianBlur stdDeviation="4" result="blur" />
-              <feMerge>
-                <feMergeNode in="blur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-          </defs>
-
-          <g className="chart-grid">
-            {[22, 81, 140, 199, 258].map((y) => (
-              <line x1="18" x2="802" y1={y} y2={y} key={y} />
-            ))}
-            {[18, 214, 410, 606, 802].map((x) => (
-              <line x1={x} x2={x} y1="22" y2="258" key={x} />
-            ))}
-          </g>
-
-          <polygon className="chart-area" points={areaPoints} />
-          <polyline className="chart-line" points={linePoints} />
-
-          <g className="chart-points">
-            {points.map((point, index) => (
-              <g
-                className="chart-point"
-                role="button"
-                tabIndex={0}
-                aria-label={`Data point ${index + 1}: ${point.value} percent`}
-                onMouseEnter={() => setActivePoint(index)}
-                onMouseLeave={() => setActivePoint(null)}
-                onFocus={() => setActivePoint(index)}
-                onBlur={() => setActivePoint(null)}
-                key={`${period}-${index}`}
-              >
-                <circle className="point-hit" cx={point.x} cy={point.y} r="14" />
-                <circle
-                  className={activePoint === index ? "point-dot point-dot-active" : "point-dot"}
-                  cx={point.x}
-                  cy={point.y}
-                  r={activePoint === index ? 5 : 3}
-                />
-              </g>
-            ))}
-          </g>
-
-          {activePoint !== null && (
-            <g
-              className="chart-tooltip"
-              transform={`translate(${Math.min(Math.max(points[activePoint].x - 44, 4), 728)} ${
-                Math.max(points[activePoint].y - 58, 4)
-              })`}
+        <div className="chart-scroll">
+          <div className="chart-track">
+            <svg
+              className="data-chart"
+              viewBox={`0 0 ${chartWidth} ${chartHeight}`}
+              role="img"
+              aria-label={`${period} signal extraction trend, currently ${values[values.length - 1]} percent`}
             >
-              <rect width="88" height="42" rx="2" />
-              <text x="10" y="15">
-                SIGNAL
-              </text>
-              <text className="tooltip-value" x="10" y="32">
-                {points[activePoint].value}.0%
-              </text>
-            </g>
-          )}
-        </svg>
+              <defs>
+                <linearGradient id="chartArea" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#FF6B00" stopOpacity="0.2" />
+                  <stop offset="100%" stopColor="#FF6B00" stopOpacity="0" />
+                </linearGradient>
+                <filter id="lineGlow" x="-20%" y="-30%" width="140%" height="160%">
+                  <feGaussianBlur stdDeviation="4" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
 
-        <div className="chart-x-labels" aria-hidden="true">
-          <span>START</span>
-          <span>25%</span>
-          <span>50%</span>
-          <span>75%</span>
-          <span>NOW</span>
+              <g className="chart-grid">
+                {[22, 81, 140, 199, 258].map((y) => (
+                  <line x1="18" x2="802" y1={y} y2={y} key={y} />
+                ))}
+                {[18, 214, 410, 606, 802].map((x) => (
+                  <line x1={x} x2={x} y1="22" y2="258" key={x} />
+                ))}
+              </g>
+
+              <polygon className="chart-area" points={areaPoints} />
+              <polyline className="chart-line" points={linePoints} />
+
+              <g className="chart-points">
+                {points.map((point, index) => (
+                  <g
+                    className="chart-point"
+                    role="img"
+                    tabIndex={0}
+                    aria-label={`Data point ${index + 1}: ${point.value} percent`}
+                    onMouseEnter={() => setActivePoint(index)}
+                    onMouseLeave={() => setActivePoint(null)}
+                    onFocus={() => setActivePoint(index)}
+                    onBlur={() => setActivePoint(null)}
+                    key={`${period}-${index}`}
+                  >
+                    <circle className="point-hit" cx={point.x} cy={point.y} r="22" />
+                    <circle
+                      className={activePoint === index ? "point-dot point-dot-active" : "point-dot"}
+                      cx={point.x}
+                      cy={point.y}
+                      r={activePoint === index ? 5 : 3}
+                    />
+                  </g>
+                ))}
+              </g>
+
+              {activePoint !== null && (
+                <g
+                  className="chart-tooltip"
+                  transform={`translate(${Math.min(Math.max(points[activePoint].x - 44, 4), 728)} ${
+                    Math.max(points[activePoint].y - 58, 4)
+                  })`}
+                >
+                  <rect width="88" height="42" rx="2" />
+                  <text x="10" y="15">
+                    SIGNAL
+                  </text>
+                  <text className="tooltip-value" x="10" y="32">
+                    {points[activePoint].value}.0%
+                  </text>
+                </g>
+              )}
+            </svg>
+
+            <div className="chart-x-labels" aria-hidden="true">
+              <span>START</span>
+              <span>25%</span>
+              <span>50%</span>
+              <span>75%</span>
+              <span>NOW</span>
+            </div>
+          </div>
         </div>
       </div>
 
       <div className="dashboard-footer">
         <span>MODEL: SIGNAL_v4.8</span>
-        <span>UPDATED IN REAL TIME</span>
+        <span>STATIC SAMPLE DATA</span>
       </div>
+
+      <p className="sr-only">
+        Sample chart showing the signal extraction index over the selected range
+        ({period}), starting at {values[0]} percent and ending at{" "}
+        {values[values.length - 1]} percent. Focus each data point to hear its
+        value.
+      </p>
     </div>
   )
 }
