@@ -253,13 +253,11 @@ a {
 }
 
 h1 {
-  max-width: 750px;
   margin: 0;
   color: #f4f3ef;
-  font-size: clamp(3.8rem, 5.5vw, 6.1rem);
   font-weight: 600;
   letter-spacing: -0.065em;
-  line-height: 0.99;
+  line-height: 1.02;
 }
 
 h1 em {
@@ -454,16 +452,14 @@ h1 em {
     opacity: 0.9;
     filter:
       contrast(1.08)
-      saturate(1.04)
-      drop-shadow(0 0 14px rgba(255, 107, 0, 0.13));
+      saturate(1.04);
   }
 
   50% {
     opacity: 1;
     filter:
       contrast(1.14)
-      saturate(1.14)
-      drop-shadow(0 0 27px rgba(255, 107, 0, 0.28));
+      saturate(1.14);
   }
 }
 
@@ -4166,9 +4162,6 @@ h1 em {
     grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
   }
 
-  h1 {
-    font-size: clamp(3.4rem, 6.5vw, 5rem);
-  }
 
   .about-inner {
     width: min(100% - 56px, 1240px);
@@ -4369,9 +4362,6 @@ h1 em {
     max-width: 680px;
   }
 
-  h1 {
-    font-size: clamp(3.25rem, 11vw, 5rem);
-  }
 
   .hero-index {
     margin-top: 58px;
@@ -4746,10 +4736,7 @@ h1 em {
     font-size: 8px;
   }
 
-  h1 {
-    font-size: clamp(2.75rem, 13vw, 3.6rem);
-    letter-spacing: -0.06em;
-  }
+
 
   .hero-description {
     margin-top: 26px;
