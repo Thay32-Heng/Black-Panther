@@ -10,8 +10,7 @@ export default function SignalsSection() {
           <p className="signals-overline">/ Signals</p>
           <h2 id="signals-title">Learning Pulse.</h2>
           <p className="signals-intro">
-            A current snapshot of academic progress. Formal certifications will
-            be added after they are completed.
+            A current snapshot of where I study and what I build in public.
           </p>
         </header>
 

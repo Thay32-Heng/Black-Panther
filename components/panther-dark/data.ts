@@ -166,9 +166,9 @@ export const learningSignals = [
     subtitle: "Dashboards · time series · maps · offline apps",
   },
   {
-    rank: "STATUS / 03",
-    title: "No formal certification yet",
-    subtitle: "Certifications will be added after completion",
+    rank: "BUILD / 03",
+    title: "This site runs live APIs",
+    subtitle: "GitHub + status APIs, live on this site",
   },
 ] as const
 
