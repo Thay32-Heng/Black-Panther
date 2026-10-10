@@ -1,8 +1,9 @@
 import InteractiveChart from "../InteractiveChart"
 
+import MotionSection from "../MotionSection"
 export default function SandboxSection() {
   return (
-          <section className="sandbox" id="sandbox" tabIndex={-1} aria-labelledby="sandbox-title">
+          <MotionSection className="sandbox" id="sandbox" tabIndex={-1} aria-labelledby="sandbox-title">
         <div className="sandbox-inner">
           <header className="sandbox-heading">
             <p className="sandbox-overline">/ The Sandbox</p>
@@ -20,6 +21,6 @@ export default function SandboxSection() {
             Select a range and hover over the data points to inspect the model
           </p>
         </div>
-      </section>
+      </MotionSection>
   )
 }

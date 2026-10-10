@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { DM_Mono, Manrope } from "next/font/google";
 import "./globals.css";
 
@@ -15,29 +16,27 @@ const dmMono = DM_Mono({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, "");
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, "") ??
+  "http://localhost:3000";
 
-const siteTitle = "Data Systems — Data Scientist & Data Engineer";
+const siteTitle = "Heng Sengthay — Data Science & Engineering";
 const siteDescription =
-  "Portfolio of a data scientist and data engineer building stealthy data pipelines and clear predictive models: projects, architecture, experience, and writing.";
+  "Portfolio of Heng Sengthay, a Y3 Data Science and Engineering student at RUPP looking for internship opportunities in data science, data engineering, analytics, and machine learning.";
 
 export const metadata: Metadata = {
-  ...(siteUrl
-    ? {
-        metadataBase: new URL(siteUrl),
-        alternates: { canonical: "/" },
-      }
-    : {}),
+  metadataBase: new URL(siteUrl),
+  alternates: { canonical: "/" },
   title: {
     default: siteTitle,
-    template: "%s — Data Systems",
+    template: "%s — Heng Sengthay",
   },
   description: siteDescription,
-  applicationName: "Data Systems",
+  applicationName: "Heng Sengthay",
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Data Systems",
+    siteName: "Heng Sengthay",
     title: siteTitle,
     description: siteDescription,
   },
@@ -117,7 +116,7 @@ const extensionAttributeGuard = `(function () {
   }, 15000);
 })();`;
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="en"

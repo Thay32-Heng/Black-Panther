@@ -1,111 +1,10 @@
 "use client"
 
-import { useEffect, useRef, useState, useSyncExternalStore } from "react"
+import { useEffect, useRef } from "react"
 import Image from "next/image"
-import dynamic from "next/dynamic"
-
-const VantaFog = dynamic(() => import("./effects/VantaFog"), { ssr: false })
-const ParticleField = dynamic(() => import("./effects/ParticleField"), { ssr: false })
-
-const PARTICLE_COUNT = 44
-
-function canRenderWebGL() {
-  try {
-    const canvas = document.createElement("canvas")
-    return Boolean(
-      window.WebGLRenderingContext &&
-        (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
-    )
-  } catch {
-    return false
-  }
-}
-
-let cachedEffectsCapability: boolean | null = null
-
-const subscribeToCapability = () => () => {}
-
-function getEffectsCapability() {
-  if (cachedEffectsCapability === null) {
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches
-    cachedEffectsCapability = !prefersReducedMotion && canRenderWebGL()
-  }
-  return cachedEffectsCapability
-}
-
-function getServerEffectsCapability() {
-  return false
-}
 
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null)
-  // Client-only capability read: false during SSR/hydration, resolved afterwards.
-  const effectsEnabled = useSyncExternalStore(
-    subscribeToCapability,
-    getEffectsCapability,
-    getServerEffectsCapability
-  )
-  const [inView, setInView] = useState(false)
-  const [effectsReady, setEffectsReady] = useState(false)
-  const [liveNodes, setLiveNodes] = useState(1)
-
-  // Load effects when the hero approaches the viewport and release them when it
-  // leaves, so nothing keeps rendering offscreen.
-  useEffect(() => {
-    const node = sectionRef.current
-    if (!node || typeof IntersectionObserver === "undefined") return
-
-    const observer = new IntersectionObserver(
-      (entries) => setInView(entries.some((entry) => entry.isIntersecting)),
-      { rootMargin: "320px 0px" }
-    )
-    observer.observe(node)
-    return () => observer.disconnect()
-  }, [])
-
-  // Keep the initial load light: wait for the window load event, then for idle
-  // time before booting the WebGL/canvas effects.
-  useEffect(() => {
-    if (!effectsEnabled || effectsReady) return
-
-    let idleId: number | undefined
-    let timeoutId: number | undefined
-
-    const start = () => setEffectsReady(true)
-    const schedule = () => {
-      if (typeof window.requestIdleCallback === "function") {
-        idleId = window.requestIdleCallback(start, { timeout: 2000 })
-      } else {
-        timeoutId = window.setTimeout(start, 200)
-      }
-    }
-
-    if (document.readyState === "complete") {
-      schedule()
-    } else {
-      window.addEventListener("load", schedule, { once: true })
-    }
-
-    return () => {
-      window.removeEventListener("load", schedule)
-      if (idleId !== undefined) window.cancelIdleCallback(idleId)
-      if (timeoutId !== undefined) window.clearTimeout(timeoutId)
-    }
-  }, [effectsEnabled, effectsReady])
-
-  // Ambient "live nodes" readout — a light telemetry tick, paused when motion is reduced.
-  useEffect(() => {
-    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)")
-    if (motionQuery.matches) return
-
-    const id = window.setInterval(() => {
-      setLiveNodes((current) => (current >= PARTICLE_COUNT ? 1 : current + 1))
-    }, 1800)
-
-    return () => window.clearInterval(id)
-  }, [])
 
   // Pointer-driven parallax: writes CSS variables for the stage tilt and spotlight.
   useEffect(() => {
@@ -169,8 +68,6 @@ export default function HeroSection() {
     }
   }, [])
 
-  const showEffects = effectsEnabled && inView && effectsReady
-
   return (
     <section
       ref={sectionRef}
@@ -181,10 +78,7 @@ export default function HeroSection() {
       data-pointer="false"
       data-hud="visible"
     >
-      {showEffects && <VantaFog />}
-      {showEffects && <ParticleField particleCount={PARTICLE_COUNT} />}
-
-      {/* Local scrim: keeps the headline readable while fog and particles animate behind it. */}
+      {/* Local scrim: keeps the headline readable while the 3D scene animates behind it. */}
       <div
         className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(90deg,rgba(0,0,0,0.74)_0%,rgba(0,0,0,0.36)_42%,rgba(0,0,0,0.08)_66%,transparent_84%)]"
         aria-hidden="true"
@@ -208,8 +102,7 @@ export default function HeroSection() {
         <div className="hud-label hud-label-tr">
           <span className="hud-live">
             <span className="hud-dot" />
-            <span className="hud-value">{String(liveNodes).padStart(2, "0")}</span>
-            Live nodes
+            Portfolio
           </span>
           <span>Signal / active</span>
         </div>
@@ -229,22 +122,28 @@ export default function HeroSection() {
           <div className="relative z-10 min-w-0">
             <div className="eyebrow">
               <span className="eyebrow-line" />
-              Data Scientist · Data Engineer
+              Data portfolio // RUPP Year 3
             </div>
 
             <h1
               id="hero-title"
-              className="text-4xl md:text-6xl lg:text-[clamp(3rem,5vw,5.5rem)] lg:leading-[1.02]"
+              className="hero-title text-4xl md:text-6xl lg:text-[clamp(3rem,5vw,5.5rem)] lg:leading-[1.02]"
             >
-              Transforming the <br className="hidden lg:block" />
-              Unknown into <br className="hidden lg:block" />
-              <em>Strategic Insights.</em>
+              Heng
+              <br className="hidden lg:block" />
+              <em className="hero-title-em">Sengthay.</em>
             </h1>
 
             <p className="hero-description">
-              I build stealthy data pipelines and clear predictive models. Let&apos;s
-              uncover the signal in the fog.
+              Data Science &amp; Engineering student turning messy data into
+              clear dashboards, practical tools, and useful insights.
             </p>
+
+            <ul className="hero-chips" aria-label="Current status">
+              <li>Royal University of Phnom Penh</li>
+              <li>Open to internships</li>
+              <li>Data · Analytics · ML</li>
+            </ul>
 
             <div className="hero-actions">
               <a className="button button-primary w-full sm:w-auto" href="#projects">
@@ -268,18 +167,22 @@ export default function HeroSection() {
           <div className="relative flex items-center justify-center">
             <div className="hero-stage">
               <span className="hero-orbit" aria-hidden="true" />
-              <Image
-                className="pointer-events-none h-auto w-full max-w-[560px] animate-[panther-signal_4.8s_ease-in-out_infinite] opacity-95 motion-reduce:animate-none lg:max-w-[940px]"
-                src="/assets/panther-data-network.png"
-                alt="Glowing orange wireframe panther formed from connected data nodes"
-                width={1248}
-                height={832}
-                sizes="(min-width: 1024px) 700px, (min-width: 640px) 560px, calc(100vw - 48px)"
-                quality={90}
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-              />
+              <div className="hero-emblem">
+                <Image
+                  className="hero-emblem-image"
+                  src="/images/panther-emblem.png"
+                  alt="Sharp glowing orange wireframe panther emblem"
+                  width={674}
+                  height={702}
+                  sizes="(min-width: 1024px) 620px, (min-width: 640px) 520px, calc(100vw - 48px)"
+                  quality={90}
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
+                />
+                <span className="hero-emblem-corner hero-emblem-corner-top" aria-hidden="true" />
+                <span className="hero-emblem-corner hero-emblem-corner-bottom" aria-hidden="true" />
+              </div>
             </div>
           </div>
         </div>

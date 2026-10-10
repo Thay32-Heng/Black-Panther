@@ -1,7 +1,6 @@
 "use client"
 
 import HeroSection from "./HeroSection"
-import PantherChat from "./PantherChat"
 import SiteHeader from "./sections/SiteHeader"
 import AboutSection from "./sections/AboutSection"
 import ArchitectureSection from "./sections/ArchitectureSection"
@@ -11,6 +10,7 @@ import ExperienceSection from "./sections/ExperienceSection"
 import PhilosophySection from "./sections/PhilosophySection"
 import WritingSection from "./sections/WritingSection"
 import SignalsSection from "./sections/SignalsSection"
+import TelemetrySection from "./sections/TelemetrySection"
 import ContactSection from "./sections/ContactSection"
 
 export default function PantherDarkHome() {
@@ -26,8 +26,8 @@ export default function PantherDarkHome() {
       <PhilosophySection />
       <WritingSection />
       <SignalsSection />
+      <TelemetrySection />
       <ContactSection />
-      <PantherChat />
     </main>
   )
 }

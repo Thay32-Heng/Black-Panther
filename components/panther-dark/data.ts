@@ -1,21 +1,21 @@
 export const stackCategories = [
   {
     number: "01",
-    title: "Data Engineering",
-    description: "Reliable systems built to move, transform, and serve data at scale.",
-    tools: ["Python", "SQL", "Apache Spark", "Airflow", "Kafka", "dbt"],
+    title: "Data Analysis & Dashboards",
+    description: "Course and project workflows for cleaning data and making it readable.",
+    tools: ["Python", "Pandas", "NumPy", "Jupyter", "Streamlit", "Matplotlib"],
   },
   {
     number: "02",
-    title: "Data Science & ML",
-    description: "Focused modeling workflows that turn uncertainty into clear outcomes.",
-    tools: ["Pandas", "TensorFlow", "PyTorch", "scikit-learn", "NumPy", "MLflow"],
+    title: "Maps & Visual Prototypes",
+    description: "Interactive visual prototypes that explain location-based data.",
+    tools: ["Folium", "Streamlit-Folium", "CSV Workflows", "Data Cleaning", "Interactive Maps", "Prototypes"],
   },
   {
     number: "03",
-    title: "Cloud & DevOps",
-    description: "Production infrastructure designed for resilience and repeatable delivery.",
-    tools: ["AWS", "Docker", "Kubernetes", "Terraform", "GitHub Actions", "Linux"],
+    title: "Web & Offline Apps",
+    description: "Small practical apps built for speed, usability, and offline access.",
+    tools: ["TypeScript", "React", "Vite", "Tailwind CSS", "Offline-First UI", "Local Data"],
   },
 ]
 
@@ -62,68 +62,71 @@ export type ChartPeriod = keyof typeof chartSeries
 export const featuredProjects = [
   {
     index: "01",
-    title: "Real-Time Anomaly Detection",
+    title: "EduRisk Analytics",
     type: "anomaly",
-    fog: "Critical failures were buried inside 14M daily sensor events.",
-    strategy: "Built a streaming feature pipeline with adaptive detection thresholds.",
-    vision: "Cut incident response time by 73% while reducing false alerts.",
-    stack: "PYTHON / KAFKA / SPARK",
+    url: "https://github.com/Thay32-Heng/EduRiskAnalysis",
+    fog: "Student risk signals were spread across attendance, scores, course, and filters.",
+    strategy: "Built an interactive Streamlit dashboard to inspect student risk levels and isolate course performance.",
+    vision: "Turned a simple student dataset into a usable early-warning monitoring tool.",
+    stack: "PYTHON / STREAMLIT / PANDAS",
   },
   {
     index: "02",
-    title: "Demand Intelligence Engine",
+    title: "Phnom Penh Precipitation Analysis",
     type: "forecast",
-    fog: "Static forecasts left inventory teams reacting weeks too late.",
-    strategy: "Deployed a probabilistic model blending sales, seasonality, and market signals.",
-    vision: "Improved forecast accuracy by 31% across 1,200 product lines.",
-    stack: "PYTORCH / AIRFLOW / AWS",
+    url: "https://github.com/Thay32-Heng/Phnom-Penh-Precipitation-Time-Series-Analysis",
+    fog: "Ten years of monthly rainfall needed cleaning before it could reveal trends and seasons.",
+    strategy: "Ran an exploratory time-series analysis across Phnom Penh precipitation from 2015 to 2025.",
+    vision: "Exposed long-term trends, recurring seasonal patterns, and unusual weather events.",
+    stack: "PYTHON / JUPYTER / TIME SERIES",
   },
   {
     index: "03",
-    title: "Unified Customer Vault",
+    title: "Kasekor Vision",
     type: "vault",
-    fog: "Fragmented records obscured the true customer journey.",
-    strategy: "Engineered an identity-resolution layer and governed warehouse model.",
-    vision: "Created one trusted view used by six cross-functional teams.",
-    stack: "DBT / SNOWFLAKE / SQL",
+    url: "https://github.com/Thay32-Heng/Kasekor-Vision",
+    fog: "Farmers need to know which crops fit local geographic and environmental conditions.",
+    strategy: "Built an interactive map prototype that recommends crops from location and environmental factors.",
+    vision: "Supports Cambodian agriculture with clearer, data-backed crop decisions.",
+    stack: "PYTHON / STREAMLIT / FOLIUM",
   },
 ] as const
 
 export const experienceTimeline = [
   {
+    year: "2026",
+    role: "Y3 Data Science & Engineering",
+    description:
+      "Studying data science and engineering at Royal University of Phnom Penh with a focus on practical, project-driven learning.",
+    focus: "RUPP / DATA SCIENCE / ENGINEERING",
+  },
+  {
     year: "2025",
-    role: "Lead Data Architect",
+    role: "Time-Series Analysis Project",
     description:
-      "Designing resilient, cloud-native data platforms that unify real-time intelligence and governed analytics.",
-    focus: "SYSTEM DESIGN / STRATEGY",
+      "Analyzed a decade of Phnom Penh precipitation data to identify trends, seasonality, and unusual weather periods.",
+    focus: "PANDAS / TIME SERIES / JUPYTER",
   },
   {
-    year: "2023",
-    role: "Senior Data Engineer",
+    year: "2025",
+    role: "EduRisk Analytics Dashboard",
     description:
-      "Scaled event-driven pipelines and transformed fragmented services into a dependable data ecosystem.",
-    focus: "STREAMING / PLATFORM",
+      "Built an interactive Streamlit dashboard that monitors attendance, scores, and student risk levels with filters and exports.",
+    focus: "STREAMLIT / DASHBOARDS / VISUALIZATION",
   },
   {
-    year: "2021",
-    role: "Machine Learning Engineer",
+    year: "2025",
+    role: "Kasekor Vision Prototype",
     description:
-      "Moved predictive models beyond notebooks into observable, repeatable production workflows.",
-    focus: "MLOPS / INFERENCE",
+      "Created an agriculture decision prototype that recommends crops from geographic and environmental factors.",
+    focus: "PYTHON / MAPS / PROTOTYPING",
   },
   {
-    year: "2019",
-    role: "Data Scientist",
+    year: "2024",
+    role: "JamTlai PWA",
     description:
-      "Translated ambiguous business questions into clear experiments, forecasts, and decision-ready stories.",
-    focus: "MODELING / INSIGHT",
-  },
-  {
-    year: "2017",
-    role: "The First Script",
-    description:
-      "Automated a repetitive problem with Python and discovered the leverage hidden inside well-structured data.",
-    focus: "PYTHON / CURIOSITY",
+      "Developed an offline-first price checker for family grocery stores with fast Khmer/English search and KHR pricing.",
+    focus: "TYPESCRIPT / PWA / LOCAL-FIRST",
   },
 ] as const
 
@@ -151,94 +154,52 @@ export const engineeringPrinciples = [
   },
 ] as const
 
-export const postMortems = [
+export const learningSignals = [
   {
-    id: "INC-042",
-    title: "The Silent Schema Drift",
-    date: "2024.08.17",
-    system: "STREAM_PROCESSOR",
-    crash:
-      "A vendor changed a nested event field without notice. The pipeline stayed green while quietly dropping 18% of incoming records.",
-    fix:
-      "Quarantined malformed events, replayed the raw topic, and introduced contract validation at every ingestion boundary.",
-    lesson:
-      "A successful job is not the same as correct data. Monitor business invariants, not just infrastructure health.",
-    terms: "SCHEMA REGISTRY / DLQ / REPLAY",
+    rank: "ACADEMIC / 01",
+    title: "RUPP · Year 3",
+    subtitle: "Data Science and Engineering coursework and labs",
   },
   {
-    id: "INC-057",
-    title: "The Costly Cartesian Join",
-    date: "2025.02.03",
-    system: "FEATURE_PIPELINE",
-    crash:
-      "An overlooked many-to-many join multiplied a feature table beyond memory limits and brought the overnight model run to a halt.",
-    fix:
-      "Stopped the workflow, corrected the grain, added cardinality assertions, and backfilled only the affected partitions.",
-    lesson:
-      "Define data grain before writing the join. Scale magnifies assumptions faster than it magnifies value.",
-    terms: "SPARK / ASSERTIONS / PARTITIONING",
+    rank: "PROJECT / 02",
+    title: "Four GitHub project areas",
+    subtitle: "Dashboards · time series · maps · offline apps",
+  },
+  {
+    rank: "STATUS / 03",
+    title: "No formal certification yet",
+    subtitle: "Certifications will be added after completion",
   },
 ] as const
 
-export const certifications = [
+export const projectNotes = [
   {
-    rank: "CERT / 01",
-    title: "AWS Certified",
-    subtitle: "Data Analytics — Specialty",
-    type: "cloud",
-  },
-  {
-    rank: "CERT / 02",
-    title: "GCP Data Engineer",
-    subtitle: "Professional Certification",
-    type: "network",
-  },
-  {
-    rank: "CERT / 03",
-    title: "Databricks Engineer",
-    subtitle: "Data Engineer — Professional",
-    type: "lakehouse",
-  },
-  {
-    rank: "RANK / 04",
-    title: "Kaggle Silver",
-    subtitle: "Competition Medalist",
-    type: "competition",
-  },
-] as const
-
-export const logbookEntries = [
-  {
-    date: "MAY 18, 2025",
-    readTime: "08 MIN",
-    category: "DATA ARCHITECTURE",
-    title: "The Cost of a Pipeline Nobody Understands",
+    category: "STUDENT DASHBOARD",
+    title: "EduRisk Analytics",
     excerpt:
-      "Why operational clarity matters more than clever abstractions when a data platform begins to scale across teams.",
+      "A Streamlit lab dashboard for monitoring attendance, scores, and student risk levels with filters, charts, and CSV export.",
+    url: "https://github.com/Thay32-Heng/EduRiskAnalysis",
   },
   {
-    date: "APR 02, 2025",
-    readTime: "06 MIN",
-    category: "MACHINE LEARNING",
-    title: "Your Model Is Not the Product",
+    category: "TIME SERIES",
+    title: "Phnom Penh Precipitation Analysis",
     excerpt:
-      "A field note on the systems, interfaces, and human decisions that turn a strong prediction into measurable value.",
+      "A Year 3 RUPP time-series project inspecting monthly Phnom Penh rainfall from 2015 to 2025 for trends and seasonality.",
+    url: "https://github.com/Thay32-Heng/Phnom-Penh-Precipitation-Time-Series-Analysis",
   },
   {
-    date: "FEB 21, 2025",
-    readTime: "11 MIN",
-    category: "DATA QUALITY",
-    title: "Monitoring the Truth, Not Just the Job",
+    category: "MAP PROTOTYPE",
+    title: "Kasekor Vision",
     excerpt:
-      "Green dashboards can still deliver broken data. These are the invariants I monitor beyond pipeline uptime.",
+      "An agriculture prototype that combines an interactive Cambodia map with environmental factors to recommend crops.",
+    url: "https://github.com/Thay32-Heng/Kasekor-Vision",
   },
   {
-    date: "JAN 09, 2025",
-    readTime: "05 MIN",
-    category: "ENGINEERING CULTURE",
-    title: "Silence as a Technical Advantage",
+    category: "OFFLINE APP",
+    title: "JamTlai Price Checker",
     excerpt:
-      "How deep work, deliberate communication, and fewer handoffs produce calmer systems and better engineering decisions.",
+      "An offline-first grocery price checker with fast Khmer/English search and dual retail/wholesale prices in KHR.",
+    url: "https://github.com/Thay32-Heng/JamTlai",
   },
 ] as const
 

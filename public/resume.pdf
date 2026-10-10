@@ -1,0 +1,55 @@
+%PDF-1.4
+1 0 obj<< /Type /Catalog /Pages 2 0 R >>endobj
+2 0 obj<< /Type /Pages /Kids [3 0 R] /Count 1 >>endobj
+3 0 obj<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R /Annots [7 0 R 8 0 R 9 0 R 10 0 R] >>endobj
+4 0 obj<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>endobj
+5 0 obj<< /Length 1986 >>stream
+BT /F1 24 Tf 56 744 Td (HENG SENGTHAY) Tj ET
+BT /F1 11 Tf 56 714 Td (Year 3 Data Science and Engineering - Royal University of Phnom Penh) Tj ET
+BT /F1 10 Tf 56 697 Td (sengthay32@gmail.com | github.com/Thay32-Heng) Tj ET
+56 677 556 677 re S
+BT /F1 12 Tf 56 665 Td (OBJECTIVE) Tj ET
+BT /F1 10 Tf 68 648 Td (Year 3 data student seeking internship opportunities in data science, data engineering,) Tj ET
+BT /F1 10 Tf 68 634 Td (analytics, or machine learning. I learn through coursework, labs, and public GitHub projects.) Tj ET
+BT /F1 12 Tf 56 613 Td (EDUCATION) Tj ET
+BT /F1 10 Tf 68 596 Td (Royal University of Phnom Penh - Year 3, Data Science and Engineering.) Tj ET
+BT /F1 12 Tf 56 575 Td (TECHNICAL SKILLS) Tj ET
+BT /F1 10 Tf 68 558 Td (Python, Pandas, NumPy, Jupyter, Streamlit, Matplotlib, Folium, TypeScript, React, Vite, CSV) Tj ET
+BT /F1 10 Tf 68 544 Td (workflows, data cleaning, and offline-first prototypes.) Tj ET
+BT /F1 12 Tf 56 523 Td (SELECTED PROJECTS) Tj ET
+BT /F1 10 Tf 68 506 Td (EduRisk Analytics - Interactive Streamlit dashboard for attendance, scores, and student risk) Tj ET
+BT /F1 10 Tf 68 492 Td (levels.) Tj ET
+BT /F1 10 Tf 68 477 Td (https://github.com/Thay32-Heng/EduRiskAnalysis) Tj ET
+BT /F1 10 Tf 68 462 Td (Phnom Penh Precipitation Analysis - Time-series analysis of monthly rainfall from 2015 to) Tj ET
+BT /F1 10 Tf 68 448 Td (2025.) Tj ET
+BT /F1 10 Tf 68 433 Td (https://github.com/Thay32-Heng/Phnom-Penh-Precipitation-Time-Series-Analysis) Tj ET
+BT /F1 10 Tf 68 418 Td (Kasekor Vision - Interactive map prototype recommending crops from environmental factors.) Tj ET
+BT /F1 10 Tf 68 403 Td (https://github.com/Thay32-Heng/Kasekor-Vision) Tj ET
+BT /F1 10 Tf 68 388 Td (JamTlai - Offline-first grocery price checker with Khmer/English search and KHR pricing.) Tj ET
+BT /F1 10 Tf 68 373 Td (https://github.com/Thay32-Heng/JamTlai) Tj ET
+BT /F1 12 Tf 56 352 Td (MOTTO) Tj ET
+BT /F1 10 Tf 68 335 Td (Stay quiet, keep building - let success speak.) Tj ET
+endstream
+endobj
+6 0 obj<< /Type /Metadata >>endobj
+7 0 obj<< /Type /Annot /Subtype /Link /Rect [68.0 475.0 307.2 485.2] /Border [0 0 0] /A << /S /URI /URI (https://github.com/Thay32-Heng/EduRiskAnalysis) >> >>endobj
+8 0 obj<< /Type /Annot /Subtype /Link /Rect [68.0 431.0 463.2 441.2] /Border [0 0 0] /A << /S /URI /URI (https://github.com/Thay32-Heng/Phnom-Penh-Precipitation-Time-Series-Analysis) >> >>endobj
+9 0 obj<< /Type /Annot /Subtype /Link /Rect [68.0 401.0 302.0 411.2] /Border [0 0 0] /A << /S /URI /URI (https://github.com/Thay32-Heng/Kasekor-Vision) >> >>endobj
+10 0 obj<< /Type /Annot /Subtype /Link /Rect [68.0 371.0 265.6 381.2] /Border [0 0 0] /A << /S /URI /URI (https://github.com/Thay32-Heng/JamTlai) >> >>endobj
+xref
+0 11
+0000000000 65535 f 
+0000000009 00000 n 
+0000000056 00000 n 
+0000000111 00000 n 
+0000000270 00000 n 
+0000000338 00000 n 
+0000002374 00000 n 
+0000002409 00000 n 
+0000002574 00000 n 
+0000002769 00000 n 
+0000002933 00000 n 
+trailer<< /Size 11 /Root 1 0 R >>
+startxref
+3091
+%%EOF

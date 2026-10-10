@@ -1,15 +1,16 @@
 import { experienceTimeline } from "../data"
 
+import MotionSection from "../MotionSection"
 export default function ExperienceSection() {
   return (
-          <section className="experience" id="experience" tabIndex={-1} aria-labelledby="experience-title">
+          <MotionSection className="experience" id="experience" tabIndex={-1} aria-labelledby="experience-title">
         <div className="experience-inner">
           <header className="experience-heading">
             <p className="experience-overline">/ The Evolution</p>
             <h2 id="experience-title">Tracing the Hunt.</h2>
             <p className="experience-intro">
-              From writing the first script to architecting complex data
-              ecosystems. Here is the path I’ve walked.
+              From coursework to public project work. Here is what I have built
+              and studied so far.
             </p>
           </header>
 
@@ -48,6 +49,6 @@ export default function ExperienceSection() {
             <span>ORIGIN POINT</span>
           </div>
         </div>
-      </section>
+      </MotionSection>
   )
 }
