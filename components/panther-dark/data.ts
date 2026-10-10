@@ -59,36 +59,44 @@ export const chartSeries = {
 
 export type ChartPeriod = keyof typeof chartSeries
 
+// Ordered by evidence strength, not by build order: the first card is the one
+// a recruiter reads in the 15 seconds they actually spend here.
+//   status: ANALYSED    = finished, real data, real findings
+//           ACTIVE BUILD = being built right now, shown as open roadmap
+//           LAB BUILD   = course lab, UI complete, sample data
 export const featuredProjects = [
   {
     index: "01",
-    title: "EduRisk Analytics",
-    type: "anomaly",
-    url: "https://github.com/Thay32-Heng/EduRiskAnalysis",
-    fog: "Student risk signals were spread across attendance, scores, course, and filters.",
-    strategy: "Built an interactive Streamlit dashboard to inspect student risk levels and isolate course performance.",
-    vision: "Turned a simple student dataset into a usable early-warning monitoring tool.",
-    stack: "PYTHON / STREAMLIT / PANDAS",
-  },
-  {
-    index: "02",
     title: "Phnom Penh Precipitation Analysis",
+    status: "ANALYSED",
     type: "forecast",
     url: "https://github.com/Thay32-Heng/Phnom-Penh-Precipitation-Time-Series-Analysis",
-    fog: "Ten years of monthly rainfall needed cleaning before it could reveal trends and seasons.",
-    strategy: "Ran an exploratory time-series analysis across Phnom Penh precipitation from 2015 to 2025.",
-    vision: "Exposed long-term trends, recurring seasonal patterns, and unusual weather events.",
+    fog: "Eleven years of Phnom Penh rainfall sat unexamined - no structure, no season, no extremes pulled out.",
+    strategy: "Built a clean 132-row monthly series (2015-2025) and ran time-plot, seasonal and seasonal-subseries analysis.",
+    vision: "Pinned the extremes: 703.62 mm in June 2020 and 0.34 mm in December 2019, across 15,689.7 mm total.",
     stack: "PYTHON / JUPYTER / TIME SERIES",
   },
   {
-    index: "03",
+    index: "02",
     title: "Kasekor Vision",
+    status: "ACTIVE BUILD",
     type: "vault",
     url: "https://github.com/Thay32-Heng/Kasekor-Vision",
-    fog: "Farmers need to know which crops fit local geographic and environmental conditions.",
-    strategy: "Built an interactive map prototype that recommends crops from location and environmental factors.",
-    vision: "Supports Cambodian agriculture with clearer, data-backed crop decisions.",
+    fog: "Cambodian farmers pick crops from habit, not from data about their own soil and weather.",
+    strategy: "Building an interactive map that pairs a farmer's location with a live weather lookup and crop dictionary.",
+    vision: "Next: real NASA POWER climate data, crop-soil scoring, and offline mode for low-connectivity farms.",
     stack: "PYTHON / STREAMLIT / FOLIUM",
+  },
+  {
+    index: "03",
+    title: "EduRisk Analytics",
+    status: "LAB BUILD",
+    type: "anomaly",
+    url: "https://github.com/Thay32-Heng/EduRiskAnalysis",
+    fog: "Attendance, scores and course load sit apart, so nobody can see who is actually falling behind.",
+    strategy: "Built a 5-page dashboard with course and risk filters, attendance and score sliders, and CSV export.",
+    vision: "A reusable monitoring interface. Runs on a small sample dataset today - real data is the next step.",
+    stack: "PYTHON / STREAMLIT / PANDAS",
   },
 ] as const
 
@@ -184,14 +192,14 @@ export const projectNotes = [
     category: "TIME SERIES",
     title: "Phnom Penh Precipitation Analysis",
     excerpt:
-      "A Year 3 RUPP time-series project inspecting monthly Phnom Penh rainfall from 2015 to 2025 for trends and seasonality.",
+      "A Year 3 time-series project: 132 monthly rainfall records (2015-2025), seasonal subseries analysis, and the wet/dry extremes.",
     url: "https://github.com/Thay32-Heng/Phnom-Penh-Precipitation-Time-Series-Analysis",
   },
   {
     category: "MAP PROTOTYPE",
     title: "Kasekor Vision",
     excerpt:
-      "An agriculture prototype that combines an interactive Cambodia map with environmental factors to recommend crops.",
+      "An agriculture prototype I'm actively building: interactive Cambodia map, live weather lookup, and a crop dictionary.",
     url: "https://github.com/Thay32-Heng/Kasekor-Vision",
   },
   {

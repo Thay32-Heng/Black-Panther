@@ -26,7 +26,7 @@ export default function ProjectsSection() {
                 <div className="project-visual">
                   <div className="project-visual-meta">
                     <span>PROJECT / {project.index}</span>
-                    <span>EXECUTED</span>
+                    <span>{project.status}</span>
                   </div>
                   <ProjectVisual type={project.type} />
                   <span className="visual-corner visual-corner-one" />
