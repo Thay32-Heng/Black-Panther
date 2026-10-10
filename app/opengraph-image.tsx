@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og"
 
 export const alt =
-  "Data Systems — Data Scientist and Data Engineer portfolio"
+  "Heng Sengthay — Data Science and Engineering student portfolio"
 
 export const size = {
   width: 1200,
@@ -34,7 +34,7 @@ export default function Image() {
         >
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
             <span style={{ color: "#ff6b00", fontSize: 34, fontWeight: 700 }}>
-              D/
+              HS/
             </span>
             <span
               style={{
@@ -43,7 +43,7 @@ export default function Image() {
                 letterSpacing: 4,
               }}
             >
-              DATA SYSTEMS
+              HENG SENGTHAY
             </span>
           </div>
           <div
@@ -64,7 +64,7 @@ export default function Image() {
                 background: "#ff6b00",
               }}
             />
-            AVAILABLE FOR SELECT PROJECTS
+            LOOKING FOR INTERNSHIP OPPORTUNITIES
           </div>
         </div>
 
@@ -76,7 +76,7 @@ export default function Image() {
               letterSpacing: 6,
             }}
           >
-            DATA SCIENTIST · DATA ENGINEER
+            DATA SCIENCE & ENGINEERING STUDENT
           </span>
           <span
             style={{
@@ -114,7 +114,7 @@ export default function Image() {
             letterSpacing: 3,
           }}
         >
-          <span>STEALTHY PIPELINES · CLEAR PREDICTIVE MODELS</span>
+          <span>PRACTICAL PROJECTS · CLEAR DATA STORIES</span>
           <span style={{ color: "#ff6b00" }}>MODELING THE UNSEEN</span>
         </div>
       </div>

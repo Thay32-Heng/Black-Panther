@@ -1,8 +1,9 @@
 import { engineeringPrinciples } from "../data"
 
+import MotionSection from "../MotionSection"
 export default function PhilosophySection() {
   return (
-          <section className="philosophy" id="philosophy" aria-labelledby="philosophy-title">
+          <MotionSection className="philosophy" id="philosophy" aria-labelledby="philosophy-title">
         <div className="philosophy-inner">
           <header className="philosophy-heading">
             <p className="philosophy-overline">/ The Philosophy</p>
@@ -37,6 +38,6 @@ export default function PhilosophySection() {
             ))}
           </div>
         </div>
-      </section>
+      </MotionSection>
   )
 }

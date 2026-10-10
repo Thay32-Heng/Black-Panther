@@ -1,16 +1,17 @@
 import { featuredProjects } from "../data"
 import { ProjectVisual } from "../ProjectVisual"
 
+import MotionSection from "../MotionSection"
 export default function ProjectsSection() {
   return (
-          <section className="projects" id="projects" tabIndex={-1} aria-labelledby="projects-title">
+          <MotionSection className="projects" id="projects" tabIndex={-1} aria-labelledby="projects-title">
         <div className="projects-inner">
           <header className="projects-heading">
             <p className="projects-overline">/ Battle-Tested Projects</p>
             <h2 id="projects-title">Proof of Execution.</h2>
             <p className="projects-intro">
-              Theory is just noise until it’s deployed. Here are a few times I
-              cleared the fog and delivered real results.
+              Course and personal projects with public code. Each card explains
+              the problem, approach, and result.
             </p>
           </header>
 
@@ -25,7 +26,7 @@ export default function ProjectsSection() {
                 <div className="project-visual">
                   <div className="project-visual-meta">
                     <span>PROJECT / {project.index}</span>
-                    <span>EXECUTED</span>
+                    <span>{project.status}</span>
                   </div>
                   <ProjectVisual type={project.type} />
                   <span className="visual-corner visual-corner-one" />
@@ -56,16 +57,12 @@ export default function ProjectsSection() {
 
                   <div className="project-actions">
                     <a
-                      href="https://github.com"
+                      href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       View Code
                       <span aria-hidden="true">↗</span>
-                    </a>
-                    <a href="#sandbox">
-                      View Demo
-                      <span aria-hidden="true">→</span>
                     </a>
                   </div>
                 </div>
@@ -73,6 +70,6 @@ export default function ProjectsSection() {
             ))}
           </div>
         </div>
-      </section>
+      </MotionSection>
   )
 }

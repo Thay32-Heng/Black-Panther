@@ -1,9 +1,10 @@
 import { pipelineStages, stackCategories } from "../data"
 import { PipelineIcon } from "../PipelineIcon"
+import MotionSection from "../MotionSection"
 
 export default function ArchitectureSection() {
   return (
-    <section
+    <MotionSection
       id="architecture"
       tabIndex={-1}
       aria-labelledby="stack-title architecture-title"
@@ -14,8 +15,8 @@ export default function ArchitectureSection() {
             <p className="stack-overline">/ The Arsenal</p>
             <h2 id="stack-title">Weapons of Choice.</h2>
             <p className="stack-intro">
-              Precision tools I use to engineer pipelines, train models, and deploy
-              scalable solutions.
+              Tools I have actually used in RUPP coursework, labs, and GitHub
+              projects.
             </p>
           </header>
 
@@ -63,8 +64,8 @@ export default function ArchitectureSection() {
             <p className="architecture-overline">/ The Blueprint</p>
             <h2 id="architecture-title">Systematic by Design.</h2>
             <p className="architecture-intro">
-              I don&apos;t just write code; I design scalable systems. Here is how
-              I process chaotic data into actionable intelligence.
+              I focus on clear, repeatable steps. Here is the workflow I practice
+              on student and prototype data projects.
             </p>
           </header>
 
@@ -117,6 +118,6 @@ export default function ArchitectureSection() {
           </div>
         </div>
       </div>
-    </section>
+    </MotionSection>
   )
 }
