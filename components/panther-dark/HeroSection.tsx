@@ -94,7 +94,7 @@ export default function HeroSection() {
 
         <div className="hud-label hud-label-tl">
           <span>
-            <strong>DS — 001</strong> / Portfolio
+            <strong>PROJ / 04</strong> / Public Repos
           </span>
           <span>Modeling the unseen</span>
         </div>
@@ -102,14 +102,14 @@ export default function HeroSection() {
         <div className="hud-label hud-label-tr">
           <span className="hud-live">
             <span className="hud-dot" />
-            Portfolio
+            Available
           </span>
-          <span>Signal / active</span>
+          <span>Data Analyst roles</span>
         </div>
 
         <div className="hud-label hud-label-bl">
           <span>Lat 11.5564 / Lon 104.9282</span>
-          <span>Uptime stable</span>
+          <span>Phnom Penh, Cambodia</span>
         </div>
 
         <div className="hud-label hud-label-br">
@@ -159,7 +159,7 @@ export default function HeroSection() {
             </div>
 
             <div className="hero-index" aria-hidden="true">
-              <span>[ 01 / 11 ]</span>
+              <span>[ 11 Sections ]</span>
               <span>Scroll to explore ↓</span>
             </div>
           </div>

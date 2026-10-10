@@ -130,7 +130,7 @@ export default function SiteHeader() {
 
       <div className="availability">
         <span className="availability-dot" />
-        Looking for internship opportunities
+        Open to internships
       </div>
 
       <div className="social-links" aria-label="Social links">
