@@ -142,7 +142,7 @@ export default function HeroSection() {
             <ul className="hero-chips" aria-label="Current status">
               <li>Royal University of Phnom Penh</li>
               <li>Open to internships</li>
-              <li>Data · Analytics · ML</li>
+              <li>Data Analyst</li>
             </ul>
 
             <div className="hero-actions">

@@ -1,3 +1,7 @@
+// Single place to correct a profile link, so a URL never has to be hunted down
+// across three components.
+export const linkedinUrl = "https://www.linkedin.com/in/heng-sengthay-19b202365/"
+
 export const stackCategories = [
   {
     number: "01",
