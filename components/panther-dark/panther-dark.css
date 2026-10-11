@@ -6415,3 +6415,152 @@ h1 em {
 .not-found .button {
   margin-top: 38px;
 }
+
+/* ==========================================================================
+   Hero layer switch — emblem <-> portrait.
+   Modelled on rinlayheang.me: two images stacked in the same box, swapped with
+   a plain opacity crossfade by an aria-pressed switch. No border, no frame, no
+   duotone filter, no caption. The photo is shown as-shot.
+   New classes only; no existing rule above is modified.
+   ========================================================================== */
+
+.hero-emblem,
+.hero-portrait {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 620ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-emblem {
+  opacity: 1;
+}
+
+.hero-portrait {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-stage[data-layer="photo"] .hero-emblem {
+  opacity: 0;
+}
+
+.hero-stage[data-layer="photo"] .hero-portrait {
+  opacity: 1;
+}
+
+/* Fill the same box the emblem fills, matching the emblem's own drop shadow so
+   the photo sits on the page with the same weight instead of floating. */
+.hero-portrait-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 34px 72px rgba(0, 0, 0, 0.58));
+}
+
+/* Switch control, styled to sit inside the existing cockpit language. */
+.hero-switch {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  bottom: -18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 16px 6px 6px;
+  transform: translateX(-50%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 999px;
+  background: rgba(10, 9, 8, 0.55);
+  backdrop-filter: blur(8px);
+  color: #e6e3dd;
+  font-family: var(--font-dm-mono), monospace;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 220ms ease, background 220ms ease;
+}
+
+.hero-switch:hover {
+  border-color: rgba(255, 107, 0, 0.5);
+}
+
+.hero-switch:focus-visible {
+  outline: 2px solid #ff6b00;
+  outline-offset: 3px;
+}
+
+.hero-switch-icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+  transition: transform 480ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 220ms ease, color 220ms ease;
+}
+
+.hero-switch-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.hero-switch:hover .hero-switch-icon {
+  background: #ff6b00;
+  color: #0a0908;
+}
+
+.hero-switch[aria-pressed="true"] .hero-switch-icon {
+  transform: rotate(180deg);
+}
+
+.hero-switch-label {
+  display: grid;
+  gap: 2px;
+}
+
+.hero-switch-title {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hero-switch-sub {
+  color: #8b8880;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 640px) {
+  .hero-switch {
+    bottom: -12px;
+    padding: 5px 13px 5px 5px;
+  }
+
+  .hero-switch-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .hero-switch-title {
+    font-size: 9px;
+  }
+
+  .hero-switch-sub {
+    font-size: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-emblem,
+  .hero-portrait,
+  .hero-switch-icon {
+    transition: none;
+  }
+}

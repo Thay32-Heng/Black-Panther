@@ -1,10 +1,16 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null)
+
+  // Two hero layers: the wireframe emblem (default) and Thay's portrait, swapped
+  // by the hero-switch button. Modelled on the layered hero at rinlayheang.me —
+  // a plain crossfade between two stacked images, no frame and no colour filter.
+  const [revealed, setRevealed] = useState(false)
+  const [warm, setWarm] = useState(false)
 
   // Pointer-driven parallax: writes CSS variables for the stage tilt and spotlight.
   useEffect(() => {
@@ -165,9 +171,13 @@ export default function HeroSection() {
           </div>
 
           <div className="relative flex items-center justify-center">
-            <div className="hero-stage">
+            <div className="hero-stage" data-layer={revealed ? "photo" : "emblem"}>
               <span className="hero-orbit" aria-hidden="true" />
-              <div className="hero-emblem">
+
+              {/* Two layers in exactly the same box. A plain crossfade between
+                  them — no frame, no border, no colour filter. Modelled on the
+                  layered hero at rinlayheang.me. */}
+              <div className="hero-emblem" data-layer="emblem">
                 <Image
                   className="hero-emblem-image"
                   src="/images/panther-emblem.png"
@@ -183,6 +193,47 @@ export default function HeroSection() {
                 <span className="hero-emblem-corner hero-emblem-corner-top" aria-hidden="true" />
                 <span className="hero-emblem-corner hero-emblem-corner-bottom" aria-hidden="true" />
               </div>
+
+              <div className="hero-portrait" data-layer="photo">
+                {/* Mounted only on intent so a ~70KB photo never loads for
+                    visitors who never press the switch. */}
+                {revealed || warm ? (
+                  <Image
+                    className="hero-portrait-image"
+                    src="/images/my-portfolio.jpg"
+                    alt="Heng Sengthay standing outdoors"
+                    width={960}
+                    height={1280}
+                    sizes="(min-width: 1024px) 620px, (min-width: 640px) 520px, calc(100vw - 48px)"
+                    quality={90}
+                    priority={revealed}
+                    decoding="async"
+                  />
+                ) : null}
+              </div>
+
+              <button
+                type="button"
+                className="hero-switch"
+                onClick={() => setRevealed((value) => !value)}
+                onMouseEnter={() => setWarm(true)}
+                onFocus={() => setWarm(true)}
+                aria-pressed={revealed}
+              >
+                <span className="hero-switch-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <path d="M4 9V5h4M20 15v4h-4M20 9V5h-4M4 15v4h4" strokeLinecap="round" />
+                  </svg>
+                </span>
+                <span className="hero-switch-label">
+                  <span className="hero-switch-title">
+                    {revealed ? "Show Emblem" : "Raise the Panther"}
+                  </span>
+                  <span className="hero-switch-sub">
+                    {revealed ? "Back to the wireframe" : "Reveal portrait"}
+                  </span>
+                </span>
+              </button>
             </div>
           </div>
         </div>
