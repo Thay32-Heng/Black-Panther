@@ -6467,23 +6467,28 @@ h1 em {
   position: absolute;
   z-index: 4;
   left: 50%;
-  bottom: -18px;
+  bottom: -46px;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 6px 16px 6px 6px;
+  gap: 11px;
+  padding: 5px 15px 5px 5px;
   transform: translateX(-50%);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 999px;
-  background: rgba(10, 9, 8, 0.55);
-  backdrop-filter: blur(8px);
-  color: #e6e3dd;
+  background: rgba(9, 8, 7, 0.72);
+  backdrop-filter: blur(10px);
+  color: #e8e5df;
   font-family: var(--font-dm-mono), monospace;
   text-align: left;
   cursor: pointer;
-  transition: border-color 220ms ease, background 220ms ease;
+  box-shadow: 0 10px 30px -14px rgba(0, 0, 0, 0.9);
+  transition: border-color 200ms ease, background 200ms ease, transform 200ms ease;
 }
 
+.hero-switch:hover {
+  border-color: rgba(255, 107, 0, 0.55);
+  background: rgba(16, 12, 9, 0.86);
+}
 .hero-switch:hover {
   border-color: rgba(255, 107, 0, 0.5);
 }
@@ -6562,5 +6567,83 @@ h1 em {
   .hero-portrait,
   .hero-switch-icon {
     transition: none;
+  }
+}
+
+/* ==========================================================================
+   Hero aura — a skewed light streak that sweeps across the portrait when the
+   mouse enters it. Copied from the "burn" treatment at rinlayheang.me:
+   a 70px skewed gradient bar in `screen` blend, animated from left:-90px to
+   left:110% so it reads as light passing over the image rather than a wipe.
+   ========================================================================== */
+
+.hero-portrait {
+  overflow: hidden;
+}
+
+.hero-portrait::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: -12%;
+  bottom: -12%;
+  left: -90px;
+  width: 78px;
+  pointer-events: none;
+  transform: skewX(-14deg);
+  opacity: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 107, 0, 0) 0%,
+    rgba(255, 107, 0, 0) 20%,
+    rgba(255, 168, 82, 0.85) 50%,
+    rgba(255, 107, 0, 0) 80%,
+    rgba(255, 107, 0, 0) 100%
+  );
+  mix-blend-mode: screen;
+}
+
+.hero-stage[data-layer="photo"]:hover .hero-portrait::after,
+.hero-portrait:focus-within::after {
+  opacity: 1;
+  animation: hero-burn 900ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes hero-burn {
+  from {
+    left: -90px;
+  }
+  to {
+    left: 110%;
+  }
+}
+
+/* A steady, faint version of the same streak so the photo still looks lit when
+   the pointer is resting on it rather than only mid-sweep. */
+.hero-stage[data-layer="photo"] .hero-portrait::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 50% 45%,
+    rgba(255, 107, 0, 0.14) 0%,
+    rgba(255, 107, 0, 0.05) 42%,
+    rgba(255, 107, 0, 0) 72%
+  );
+  opacity: 0;
+  transition: opacity 520ms ease;
+}
+
+.hero-stage[data-layer="photo"] .hero-portrait::before {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-stage[data-layer="photo"]:hover .hero-portrait::after,
+  .hero-portrait:focus-within::after {
+    animation: none;
+    opacity: 0;
   }
 }
