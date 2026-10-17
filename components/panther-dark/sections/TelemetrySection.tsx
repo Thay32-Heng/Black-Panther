@@ -91,11 +91,12 @@ export default function TelemetrySection() {
     <MotionSection className="telemetry" id="telemetry" aria-labelledby="telemetry-title" ref={sectionRef}>
       <div className="telemetry-inner">
         <header className="telemetry-heading">
-          <p className="telemetry-overline">/ Live Telemetry</p>
-          <h2 id="telemetry-title">The Pulse of the Engineer.</h2>
+          <p className="telemetry-overline">/ Live, from real APIs</p>
+          <h2 id="telemetry-title">This number is fetched, not typed.</h2>
           <p className="telemetry-intro">
-            A fresh GitHub and connectivity snapshot, loaded when this console
-            scrolls into view.
+            The GitHub card below is a live query against my public account, and
+            the second card is a live check that this site is serving. Neither is
+            a hardcoded number.
           </p>
         </header>
 

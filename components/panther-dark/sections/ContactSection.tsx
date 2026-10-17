@@ -9,12 +9,13 @@ export default function ContactSection() {
 
         <div className="contact-inner">
           <header className="contact-heading">
-            <p className="contact-overline">/ Initiate Contact</p>
-            <h2 id="contact-title">Ready to Clear the Fog?</h2>
+            <p className="contact-overline">/ Get in touch</p>
+            <h2 id="contact-title">I&apos;m looking for a data analyst internship.</h2>
             <p className="contact-intro">
-              I am looking for a data analyst internship where real datasets turn
-              into clear decisions. I work with messy data every day, and I am
-              actively growing into data engineering. Clear the fog and reach out.
+              I am a Year 3 Data Science and Engineering student at RUPP. I clean
+              messy data, run time-series analysis in Python, and turn the results
+              into dashboards people can read. If you have a role where a junior
+              analyst would learn something fast, I would like to hear about it.
             </p>
           </header>
 
@@ -59,9 +60,9 @@ export default function ContactSection() {
         </div>
 
         <footer className="site-footer">
-          <span>© 2025 HENG SENGTHAY</span>
-          <span>ENGINEERED WITH INTENT</span>
-          <a href="#content">RETURN TO ORIGIN ↑</a>
+          <span>© {new Date().getFullYear()} HENG SENGTHAY</span>
+          <span>Built with Next.js · data plotted from a public dataset</span>
+          <a href="#content">BACK TO TOP ↑</a>
         </footer>
       </MotionSection>
   )

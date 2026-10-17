@@ -5,8 +5,8 @@ Generates public/resume.pdf — a clean, ATS-friendly, text-based resume.
 No external libraries: the PDF is written directly so it always works in WSL.
 Text-based (not an image) so recruiters' ATS parsers can actually read it.
 
-NOTE: Fields marked  # MOCK  are placeholders. Replace them with real values,
-then re-run:  python3 tools/build_resume.py
+The output is checked for unfinished placeholders before it is written, because
+a CV that still says "XX XXX XXX" or "MOCK" undoes the whole portfolio.
 """
 
 import textwrap
@@ -22,10 +22,13 @@ RIGHT = PAGE_W - MARGIN_R
 # role title shown under the name
 TITLE = "Data Analyst Intern"
 
-# ---------------------------------------------------------------- MOCK FIELDS
-PHONE = "+855 XX XXX XXX"                     # MOCK - real number
-LOCATION = "Phnom Penh, Cambodia"             # MOCK - confirm city
-GRAD_YEAR = "Expected 2027"                   # MOCK - real graduation year
+# ---------------------------------------------------------------- contact
+# Leave PHONE empty until you have a real number. A placeholder like
+# "+855 XX XXX XXX" in a downloaded CV reads as unfinished work to a recruiter,
+# so an empty value drops the field from the contact line instead of printing it.
+PHONE = ""                                        # e.g. "+855 12 345 678"
+LOCATION = "Phnom Penh, Cambodia"
+GRAD_YEAR = "Expected 2027"
 
 EMAIL = "sengthay32@gmail.com"
 GITHUB = "github.com/Thay32-Heng"
@@ -98,11 +101,11 @@ PROJECTS = [
     },
 ]
 
-# MOCK: fill these in, or delete the section before sending.
+# Only list what you can defend in an interview. Add a line here when you have
+# something real to put there — a competition, a talk, tutoring, volunteering.
+# An empty bullet helps nobody, so there is no placeholder line.
 EXTRAS = [
     "Coursework: Data Mining, Data Structures & Algorithms, Statistics, Database Systems.",
-    "MOCK - add a hackathon, talk, or competition here if you have one.",
-    "MOCK - add a relevant internship, tutoring, or volunteer role here.",
 ]
 
 # ---------------------------------------------------------------- PDF writing
@@ -222,7 +225,7 @@ d.text(MARGIN_L, 19, "HENG SENGTHAY", "F2")
 d.space(15)
 d.text(MARGIN_L, 11, TITLE, "F2")
 d.space(14)
-contact_line = f"{PHONE}  |  {LOCATION}  |  {EMAIL}"
+contact_line = "  |  ".join(part for part in (PHONE, LOCATION, EMAIL) if part)
 d.para(contact_line, size=9.5, lead=12)
 contact_line2 = f"{LINKEDIN}  |  {GITHUB}"
 d.para(contact_line2, size=9.5, lead=12)
@@ -275,6 +278,52 @@ for e in EXTRAS:
     d.space(13)
 
 pdf = d.build()
+
+# ---- refuse to ship an unfinished CV
+# The strings below are what a placeholder looks like to a recruiter. A hit here
+# means a field was left as an example rather than filled in, so the PDF is
+# rejected instead of being written and emailed out.
+PLACEHOLDER_MARKERS = ("XX", "MOCK", "TODO", "TBD", "LOREM", "PLACEHOLDER", "FILL IN")
+
+
+def shipped_strings():
+    """Every string that reaches the PDF. Anything left out of this list is a
+    field the guard cannot protect, so new fields must be added here too."""
+    yield PHONE
+    yield LOCATION
+    yield GRAD_YEAR
+    yield TITLE
+    yield OBJECTIVE
+    yield EMAIL
+    yield GITHUB
+    yield LINKEDIN
+    for institution, programme, when in EDUCATION:
+        yield from (institution, programme, when)
+    for group, items in SKILLS:
+        yield group
+        yield items
+    for p in PROJECTS:
+        yield p["name"]
+        yield p["tag"]
+        yield p["url"]
+        yield from p["lines"]
+    yield from EXTRAS
+
+
+leaked = set()
+for text in shipped_strings():
+    upper = str(text).upper()
+    for marker in PLACEHOLDER_MARKERS:
+        if marker in upper:
+            leaked.add(marker)
+
+if leaked:
+    raise SystemExit(
+        "Refusing to write public/resume.pdf - unfinished placeholder(s) found: "
+        + ", ".join(sorted(leaked))
+        + "\nFill them in in tools/build_resume.py, or remove the field."
+    )
+
 with open("public/resume.pdf", "wb") as f:
     f.write(pdf)
 print(f"wrote public/resume.pdf ({len(pdf)} bytes, {len(d.pages)} page(s))")

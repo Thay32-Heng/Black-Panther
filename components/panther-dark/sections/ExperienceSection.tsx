@@ -6,11 +6,11 @@ export default function ExperienceSection() {
           <MotionSection className="experience" id="experience" tabIndex={-1} aria-labelledby="experience-title">
         <div className="experience-inner">
           <header className="experience-heading">
-            <p className="experience-overline">/ The Evolution</p>
-            <h2 id="experience-title">Tracing the Hunt.</h2>
+            <p className="experience-overline">/ What I have built so far</p>
+            <h2 id="experience-title">From coursework to shipped projects.</h2>
             <p className="experience-intro">
-              From coursework to public project work. Here is what I have built
-              and studied so far.
+              I am still early in my career, so this is a record of what I have
+              actually completed and studied, not a list of job titles.
             </p>
           </header>
 

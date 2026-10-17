@@ -6,11 +6,11 @@ export default function PhilosophySection() {
           <MotionSection className="philosophy" id="philosophy" aria-labelledby="philosophy-title">
         <div className="philosophy-inner">
           <header className="philosophy-heading">
-            <p className="philosophy-overline">/ The Philosophy</p>
-            <h2 id="philosophy-title">Principles Over Syntax.</h2>
+            <p className="philosophy-overline">/ Working principles</p>
+            <h2 id="philosophy-title">Three things I keep in mind.</h2>
             <p className="philosophy-intro">
-              Languages change. Frameworks die. But a solid engineering mindset
-              scales forever. These are the laws I code by.
+              These are not slogans. They are the three decisions I keep making
+              when a dataset fights back.
             </p>
           </header>
 

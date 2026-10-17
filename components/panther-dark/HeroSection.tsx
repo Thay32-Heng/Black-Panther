@@ -2,6 +2,17 @@
 
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
+import { rainfallStats } from "./rainfall"
+
+// Read from the dataset, not typed by hand, so these can never drift out of
+// sync with the project they describe.
+const HERO_FACTS = [
+  { label: "Months of rainfall analysed", value: String(rainfallStats.observations) },
+  { label: "Rain falling May-Oct", value: `${rainfallStats.wetSeasonShare}%` },
+  // Four public repos in total; the three case studies above are the ones with
+  // findings worth reading.
+  { label: "Public repos", value: "04" },
+] as const
 
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -102,7 +113,7 @@ export default function HeroSection() {
           <span>
             <strong>PROJ / 04</strong> / Public Repos
           </span>
-          <span>Modeling the unseen</span>
+          <span>Data Analyst, RUPP Y3</span>
         </div>
 
         <div className="hud-label hud-label-tr">
@@ -110,7 +121,7 @@ export default function HeroSection() {
             <span className="hud-dot" />
             Available
           </span>
-          <span>Data Analyst roles</span>
+          <span>Internships, 2027</span>
         </div>
 
         <div className="hud-label hud-label-bl">
@@ -141,15 +152,40 @@ export default function HeroSection() {
             </h1>
 
             <p className="hero-description">
-              Data Science &amp; Engineering student turning messy data into
-              clear dashboards, practical tools, and useful insights.
+              Data Science &amp; Engineering student at RUPP. I clean messy data,
+              run time-series analysis in Python, and build dashboards people can
+              actually read.
             </p>
 
+            {/* Kept short on purpose: `.hero-chips li` is `white-space: nowrap`,
+                so a long label cannot wrap — it widens the row and pushes the
+                hero past the viewport, where `.site-shell { overflow: clip }`
+                silently cuts it off. */}
             <ul className="hero-chips" aria-label="Current status">
-              <li>Royal University of Phnom Penh</li>
+              <li>RUPP · Data Science · Y3</li>
               <li>Open to internships</li>
-              <li>Data Analyst</li>
+              <li>Python · Pandas · Streamlit</li>
             </ul>
+
+            {/* Three hard numbers pulled from the real projects. Styled with
+                Tailwind utilities rather than a new rule in the hand-tuned
+                stylesheet, which is read-only.
+                Single column until `sm`, because `.site-shell` sets
+                `overflow: clip` — anything we get too wide here is silently
+                truncated rather than made scrollable, so the reader never
+                finds out it was cut. */}
+            <dl className="mt-[34px] grid min-w-0 grid-cols-1 gap-px border border-[#1c1c1c] bg-[#1c1c1c] sm:grid-cols-3">
+              {HERO_FACTS.map((fact) => (
+                <div className="min-w-0 bg-[#0b0b0b] px-[18px] py-4" key={fact.label}>
+                  <dt className="font-[family-name:var(--font-dm-mono)] text-[9px] uppercase leading-[1.5] tracking-[0.14em] text-[#858582]">
+                    {fact.label}
+                  </dt>
+                  <dd className="mt-[9px] text-[1.9rem] font-semibold leading-none tracking-[-0.04em] text-[#ff6b00]">
+                    {fact.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
 
             <div className="hero-actions">
               <a className="button button-primary w-full sm:w-auto" href="#projects">

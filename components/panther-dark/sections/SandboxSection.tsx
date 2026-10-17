@@ -6,11 +6,12 @@ export default function SandboxSection() {
           <MotionSection className="sandbox" id="sandbox" tabIndex={-1} aria-labelledby="sandbox-title">
         <div className="sandbox-inner">
           <header className="sandbox-heading">
-            <p className="sandbox-overline">/ The Sandbox</p>
-            <h2 id="sandbox-title">Data in Motion.</h2>
+            <p className="sandbox-overline">/ Real data, not a mockup</p>
+            <h2 id="sandbox-title">132 months of actual rainfall.</h2>
             <p className="sandbox-intro">
-              Don&apos;t just take my word for it. Interact with the sample data
-              model below to see how I extract signals from the noise.
+              This is the same dataset from my time-series project, plotted three
+              ways: the full monthly series, the seasonal mean for each calendar
+              month, and the yearly totals. Hover or tab any point to read it.
             </p>
           </header>
 
@@ -18,7 +19,7 @@ export default function SandboxSection() {
 
           <p className="sandbox-hint">
             <span aria-hidden="true">+</span>
-            Select a range and hover over the data points to inspect the model
+            Switch views to see the time plot, the seasonal cycle, and the year-on-year totals
           </p>
         </div>
       </MotionSection>

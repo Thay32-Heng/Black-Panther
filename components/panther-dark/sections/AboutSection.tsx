@@ -37,13 +37,14 @@ export default function AboutSection() {
           </div>
 
           <div className="about-copy">
-            <p className="about-overline">/ Who I am</p>
-            <h2 id="about-title">The Student Behind the Fog.</h2>
+            <p className="about-overline">/ About me</p>
+            <h2 id="about-title">A student who likes getting the data clean.</h2>
             <p className="about-description">
-              My work focuses on turning messy data into clear dashboards,
-              practical tools, and useful insights. As a Year 3 student, I am
-              looking for an internship where I can learn from a team,
-              contribute to real data work, and keep building.
+              I am Heng Sengthay, a Year 3 Data Science and Engineering student at
+              the Royal University of Phnom Penh. Most of what I build starts the
+              same way: someone hands me a messy CSV and asks a question about it.
+              I like that part — the cleaning, the checking, the moment a column
+              finally means something.
             </p>
 
             <div className="about-strengths">
@@ -68,7 +69,8 @@ export default function AboutSection() {
             </div>
 
             <p className="about-quote">
-              “Stay quiet, keep building — let success speak.”
+            Complex data architectures is engineered quietly.
+            allowing reliable insights to define success.
             </p>
           </div>
         </div>

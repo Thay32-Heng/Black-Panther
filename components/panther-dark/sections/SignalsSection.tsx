@@ -7,10 +7,11 @@ export default function SignalsSection() {
     <MotionSection className="signals" id="signals" aria-labelledby="signals-title">
       <div className="signals-inner">
         <header className="signals-heading">
-          <p className="signals-overline">/ Signals</p>
-          <h2 id="signals-title">Learning Pulse.</h2>
+          <p className="signals-overline">/ Current status</p>
+          <h2 id="signals-title">Where I am right now.</h2>
           <p className="signals-intro">
-            A current snapshot of where I study and what I build in public.
+            Year 3 of Data Science and Engineering at RUPP, looking for a data
+            analyst internship.
           </p>
         </header>
 

@@ -12,11 +12,11 @@ export default function ArchitectureSection() {
       <div className="stack">
         <div className="stack-inner">
           <header className="stack-heading">
-            <p className="stack-overline">/ The Arsenal</p>
-            <h2 id="stack-title">Weapons of Choice.</h2>
+            <p className="stack-overline">/ Tools I have actually used</p>
+            <h2 id="stack-title">What I work with.</h2>
             <p className="stack-intro">
-              Tools I have actually used in RUPP coursework, labs, and GitHub
-              projects.
+              Every tool listed here has been used in RUPP coursework, labs, or
+              one of my own GitHub projects. Nothing on this list is aspirational.
             </p>
           </header>
 
@@ -61,11 +61,11 @@ export default function ArchitectureSection() {
       <div className="architecture">
         <div className="architecture-inner">
           <header className="architecture-heading">
-            <p className="architecture-overline">/ The Blueprint</p>
-            <h2 id="architecture-title">Systematic by Design.</h2>
+            <p className="architecture-overline">/ How I work</p>
+            <h2 id="architecture-title">The order I do things in.</h2>
             <p className="architecture-intro">
-              I focus on clear, repeatable steps. Here is the workflow I practice
-              on student and prototype data projects.
+              Most of my data problems are cleaning problems, not modelling
+              problems. This is the sequence I actually follow.
             </p>
           </header>
 

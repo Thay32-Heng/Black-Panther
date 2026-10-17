@@ -7,11 +7,12 @@ export default function ProjectsSection() {
           <MotionSection className="projects" id="projects" tabIndex={-1} aria-labelledby="projects-title">
         <div className="projects-inner">
           <header className="projects-heading">
-            <p className="projects-overline">/ Battle-Tested Projects</p>
-            <h2 id="projects-title">Proof of Execution.</h2>
+            <p className="projects-overline">/ Projects with public code</p>
+            <h2 id="projects-title">Three projects, and what each one found.</h2>
             <p className="projects-intro">
-              Course and personal projects with public code. Each card explains
-              the problem, approach, and result.
+              Every card states the problem, what I actually did, and the result
+              the data gave. The status label is honest about how finished each
+              one is.
             </p>
           </header>
 
@@ -42,15 +43,15 @@ export default function ProjectsSection() {
 
                   <dl className="project-details">
                     <div>
-                      <dt>The Fog</dt>
+                      <dt>The problem</dt>
                       <dd>{project.fog}</dd>
                     </div>
                     <div>
-                      <dt>The Strategy</dt>
+                      <dt>What I did</dt>
                       <dd>{project.strategy}</dd>
                     </div>
                     <div className="project-result">
-                      <dt>The Vision</dt>
+                      <dt>What the data showed</dt>
                       <dd>{project.vision}</dd>
                     </div>
                   </dl>

@@ -11,11 +11,11 @@ export default function WritingSection() {
       <div className="logbook">
         <div className="logbook-inner">
           <header className="logbook-heading">
-            <p className="logbook-overline">/ Project Notes</p>
-            <h2 id="logbook-title">Learning in Public.</h2>
+            <p className="logbook-overline">/ Project notes</p>
+            <h2 id="logbook-title">The short version of each repo.</h2>
             <p className="logbook-intro">
-              Short notes from public repositories. Each note links directly to
-              the code behind it.
+              One line on what each project does. Every note links straight to the
+              code behind it.
             </p>
           </header>
 
