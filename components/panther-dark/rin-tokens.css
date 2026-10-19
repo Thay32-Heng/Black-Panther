@@ -1,0 +1,320 @@
+/* ==========================================================================
+   rin-tokens.css — Phase A
+   Adopted visual language from rinlayheang.me, added ALONGSIDE the existing
+   Black Panther CSS. Purely additive: every selector is namespaced with
+   `rin-` so nothing in panther-dark.css or globals.css is touched.
+
+   Design language:
+   - CSS custom-property token sets
+   - Theme "tones" that swap tokens per section
+   - Cut-corner clip-path buttons
+   - Corner-bracket HUD cards
+   - Procedural topographic contours
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Tokens (light "paper" default)
+   -------------------------------------------------------------------------- */
+:root {
+  --rin-paper: #eef3f4;
+  --rin-ink: #0b1026;
+  --rin-ink-soft: #4b5575;
+  --rin-teal: #0a7a8c;
+  --rin-yellow: #ffd43b;
+  --rin-rule: #0b102624;
+
+  --rin-gutter: clamp(16px, 5vw, 72px);
+  --rin-max: 1280px;
+  --rin-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Motion tokens. Durations live here rather than being copied per rule, so
+     the whole system can be retimed from one place. */
+  --rin-dur-fast: 200ms;
+  --rin-dur-base: 350ms;
+  --rin-dur-reveal: 900ms;
+
+  /* Stagger step, and a hard ceiling on the multiplier. UI/UX guidance is
+     explicit that animating every element in a viewport is a motion-sickness
+     and distraction risk, so the index is clamped rather than allowed to grow
+     without bound on a long list. */
+  --rin-stagger: 90ms;
+  --rin-stagger-max: 4;
+
+  /* Cut corner — notched button shape */
+  --rin-cut: polygon(
+    10px 0,
+    100% 0,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 100%,
+    0 100%,
+    0 10px
+  );
+
+  /* Bracket arm length for HUD cards */
+  --rin-arm: 10px;
+}
+
+/* --------------------------------------------------------------------------
+   2. Tones — theme sets that swap tokens for a whole subtree
+   -------------------------------------------------------------------------- */
+.rin-tone-ink {
+  --rin-paper: #0b1026;
+  --rin-ink: #eef3f4;
+  --rin-ink-soft: #aab3cf;
+  --rin-teal: #ffd43b;
+  --rin-yellow: #ffd43b;
+  --rin-rule: #eef3f433;
+}
+
+.rin-tone-yellow {
+  --rin-paper: #ffd43b;
+  --rin-ink: #0b1026;
+  --rin-ink-soft: #4a4220;
+  --rin-teal: #0a5f6d;
+  --rin-yellow: #0a5f6d;
+  --rin-rule: #0b102640;
+}
+
+.rin-tone-teal {
+  --rin-paper: #0a7a8c;
+  --rin-ink: #ffffff;
+  --rin-ink-soft: #d3eef2;
+  --rin-teal: #ffffff;
+  --rin-yellow: #ffd43b;
+  --rin-rule: #ffffff47;
+}
+
+/* --------------------------------------------------------------------------
+   3. Display font class — condensed, uppercase, tight
+   -------------------------------------------------------------------------- */
+.rin-cond {
+  font-family: var(--font-dm-mono), var(--font-manrope), monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.86;
+}
+
+/* --------------------------------------------------------------------------
+   4. Cut-corner button
+   -------------------------------------------------------------------------- */
+.rin-cut-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 18px;
+  flex-shrink: 0;
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--rin-teal);
+  background: color-mix(in srgb, var(--rin-paper) 85%, transparent);
+  border: 1px solid var(--rin-teal);
+  clip-path: var(--rin-cut);
+  text-decoration: none;
+  transition:
+    background-color var(--rin-dur-fast),
+    color var(--rin-dur-fast);
+}
+
+.rin-cut-btn:hover {
+  color: var(--rin-paper);
+  background: var(--rin-teal);
+}
+
+/* `clip-path` clips the element's own rendering, which includes `outline` and
+   any outer box-shadow. An outline-based focus ring is therefore drawn outside
+   the clip region and never shows — a WCAG 2.4.7 failure. An inset shadow sits
+   inside the clip and stays visible. */
+.rin-cut-btn:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--rin-teal);
+}
+
+/* Solid variant */
+.rin-cut-btn-solid {
+  color: var(--rin-paper);
+  background: var(--rin-teal);
+}
+
+.rin-cut-btn-solid:hover {
+  color: var(--rin-teal);
+  background: transparent;
+}
+
+/* --------------------------------------------------------------------------
+   5. HUD card — corner brackets drawn with layered linear-gradients
+   -------------------------------------------------------------------------- */
+.rin-hud {
+  --rin-c: var(--rin-ink);
+  position: relative;
+  padding: 20px 22px;
+  color: var(--rin-ink);
+  background:
+    linear-gradient(var(--rin-c), var(--rin-c)) left top / var(--rin-arm) 1px no-repeat,
+    linear-gradient(var(--rin-c), var(--rin-c)) left top / 1px var(--rin-arm) no-repeat,
+    linear-gradient(var(--rin-c), var(--rin-c)) right top / var(--rin-arm) 1px no-repeat,
+    linear-gradient(var(--rin-c), var(--rin-c)) right top / 1px var(--rin-arm) no-repeat,
+    linear-gradient(var(--rin-c), var(--rin-c)) left bottom / var(--rin-arm) 1px no-repeat,
+    linear-gradient(var(--rin-c), var(--rin-c)) left bottom / 1px var(--rin-arm) no-repeat,
+    linear-gradient(var(--rin-c), var(--rin-c)) right bottom / var(--rin-arm) 1px no-repeat,
+    linear-gradient(var(--rin-c), var(--rin-c)) right bottom / 1px var(--rin-arm) no-repeat,
+    color-mix(in srgb, var(--rin-paper) 78%, transparent);
+  transition: background-size var(--rin-dur-base) var(--rin-ease);
+}
+
+.rin-hud:hover {
+  --rin-c: var(--rin-teal);
+  --rin-arm: 22px;
+}
+
+/* Label + value inside a HUD card */
+.rin-hud-label {
+  margin: 0;
+  color: var(--rin-teal);
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.rin-hud-title {
+  margin: 8px 0 0;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.rin-hud-sub {
+  margin: 4px 0 0;
+  color: var(--rin-ink-soft);
+  font-size: 12px;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* --------------------------------------------------------------------------
+   6. Contours — topographic SVG overlay
+   -------------------------------------------------------------------------- */
+.rin-contours {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.rin-contours path {
+  fill: none;
+  stroke: var(--rin-ink);
+  stroke-opacity: 0.06;
+  stroke-width: 1px;
+  vector-effect: non-scaling-stroke;
+}
+
+.rin-tone-ink .rin-contours path,
+.rin-tone-teal .rin-contours path {
+  stroke-opacity: 0.08;
+}
+
+.rin-tone-yellow .rin-contours path {
+  stroke-opacity: 0.1;
+}
+
+/* --------------------------------------------------------------------------
+   7. Section scaffolding
+   -------------------------------------------------------------------------- */
+.rin-section {
+  position: relative;
+  isolation: isolate;
+  max-width: var(--rin-max);
+  margin: 0 auto;
+  padding: clamp(80px, 10vw, 130px) var(--rin-gutter) 0;
+}
+
+.rin-sec-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: clamp(32px, 4vw, 48px);
+}
+
+.rin-sec-title {
+  font-size: clamp(56px, 8vw, 120px);
+}
+
+.rin-sec-meta {
+  padding-bottom: 6px;
+  text-align: right;
+}
+
+.rin-sec-sub {
+  color: var(--rin-ink-soft);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* --------------------------------------------------------------------------
+   8. Reveal-on-scroll
+   Add [data-rin-reveal] to any element; the hook adds .rin-is-visible.
+
+   CONFLICT WARNING: every existing section already animates in through
+   framer-motion in `MotionSection.tsx` (`initial={{ opacity: 0, y: 28 }}`
+   plus `whileInView`). Do NOT tag an element inside a MotionSection, and never
+   tag a MotionSection itself - two independent reveal systems would run at
+   once and fight. This CSS owns reveal only for content outside that system.
+
+   Stagger is clamped to --rin-stagger-max. Without the clamp, a section with
+   a dozen tagged elements cascades for over a second after it scrolls into
+   view - sluggish, and an accessibility problem for motion-sensitive
+   visitors. Past the clamp, later items simply animate together.
+
+   `transition-property` is set as a LONGHAND on purpose. The shorthand
+   `transition:` would replace any existing transition on the element, and
+   panther-dark.css declares `transition` on ~45 rules (hero-switch, buttons,
+   cards). Tagging one of those would silently kill its hover animation for
+   the lifetime of the page. The reveal only claims opacity and translate.
+   -------------------------------------------------------------------------- */
+.rin-reveal-ready [data-rin-reveal] {
+  --rin-d: calc(min(var(--rin-i, 0), var(--rin-stagger-max)) * var(--rin-stagger));
+  transition-property: opacity, translate;
+  transition-duration: var(--rin-dur-reveal);
+  transition-timing-function: var(--rin-ease);
+  transition-delay: var(--rin-d);
+}
+
+.rin-reveal-ready [data-rin-reveal]:not(.rin-is-visible) {
+  opacity: 0;
+  translate: 0 36px;
+  /* Opacity alone leaves the element focusable while invisible, so a keyboard
+     user can tab to something they cannot see. `visibility` flips at the same
+     moment the class is added, so the transition still plays. */
+  visibility: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   9. Accessibility — respect reduced motion
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .rin-reveal-ready [data-rin-reveal] {
+    transition: none;
+  }
+
+  .rin-reveal-ready [data-rin-reveal]:not(.rin-is-visible) {
+    opacity: 1;
+    translate: none;
+  }
+
+  .rin-cut-btn,
+  .rin-hud {
+    transition: none;
+  }
+}

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { rainfallStats } from "./rainfall"
+import Contours from "./Contours"
 
 // Read from the dataset, not typed by hand, so these can never drift out of
 // sync with the project they describe.
@@ -95,6 +96,21 @@ export default function HeroSection() {
       data-pointer="false"
       data-hud="visible"
     >
+      {/* Phase A: topographic contour overlay, borrowed from rinlayheang.me's
+          hero. Sits at z-0 behind the existing scrim so the headline contrast
+          is unchanged; `rin-tone-ink` gives it light strokes on this dark
+          section. Purely additive — no existing rule is altered. */}
+      {/* `pointer-events-none` matters: this wrapper is full-bleed, and above
+          1600px the content column leaves bare hero margins where the wrapper
+          is the topmost element. Anything clickable added there later would
+          otherwise sit under an invisible blocker. */}
+      <div
+        className="rin-tone-ink pointer-events-none absolute inset-0 z-0"
+        aria-hidden="true"
+      >
+        <Contours />
+      </div>
+
       {/* Local scrim: keeps the headline readable while the 3D scene animates behind it. */}
       <div
         className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(90deg,rgba(0,0,0,0.74)_0%,rgba(0,0,0,0.36)_42%,rgba(0,0,0,0.08)_66%,transparent_84%)]"

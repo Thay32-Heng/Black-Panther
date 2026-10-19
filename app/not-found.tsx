@@ -1,5 +1,7 @@
 import Link from "next/link"
 import "../components/panther-dark/panther-dark.css"
+// Phase A — same adopted visual language as the home page.
+import "../components/panther-dark/rin-tokens.css"
 
 export default function NotFound() {
   return (
