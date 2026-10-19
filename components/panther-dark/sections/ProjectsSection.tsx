@@ -4,7 +4,7 @@ import { ProjectVisual } from "../ProjectVisual"
 import MotionSection from "../MotionSection"
 export default function ProjectsSection() {
   return (
-          <MotionSection className="projects" id="projects" tabIndex={-1} aria-labelledby="projects-title">
+          <MotionSection className="projects rin-tone-teal" id="projects" tabIndex={-1} aria-labelledby="projects-title">
         <div className="projects-inner">
           <header className="projects-heading">
             <p className="projects-overline">/ Projects with public code</p>
@@ -56,14 +56,26 @@ export default function ProjectsSection() {
                     </div>
                   </dl>
 
+                  {/* rin HUD metric cards for each project */}
+                  <div className="rin-hud-grid" style={{ marginTop: '24px' }}>
+                    {project.metrics?.map((metric) => (
+                      <div className="rin-hud" key={metric.label}>
+                        <p className="rin-hud-label">{metric.label}</p>
+                        <p className="rin-hud-title" style={{ fontSize: 'clamp(1.5rem, 3vw, 2.5rem)', fontWeight: 700, marginTop: '8px' }}>
+                          {metric.value}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+
                   <div className="project-actions">
                     <a
+                      className="rin-cut-btn"
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       View Code
-                      <span aria-hidden="true">↗</span>
                     </a>
                   </div>
                 </div>

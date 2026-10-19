@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { rainfallStats } from "./rainfall"
 import Contours from "./Contours"
+import useRinReveal from "./useRinReveal"
 
 // Read from the dataset, not typed by hand, so these can never drift out of
 // sync with the project they describe.
@@ -17,6 +18,9 @@ const HERO_FACTS = [
 
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null)
+
+  // Activate rin design system scroll reveal on this section's [data-rin-reveal] elements.
+  useRinReveal(sectionRef)
 
   // Two hero layers: the wireframe emblem (default) and Thay's portrait, swapped
   // by the hero-switch button. Modelled on the layered hero at rinlayheang.me —
@@ -183,35 +187,25 @@ export default function HeroSection() {
               <li>Python · Pandas · Streamlit</li>
             </ul>
 
-            {/* Three hard numbers pulled from the real projects. Styled with
-                Tailwind utilities rather than a new rule in the hand-tuned
-                stylesheet, which is read-only.
-                Single column until `sm`, because `.site-shell` sets
-                `overflow: clip` — anything we get too wide here is silently
-                truncated rather than made scrollable, so the reader never
-                finds out it was cut. */}
-            <dl className="mt-[34px] grid min-w-0 grid-cols-1 gap-px border border-[#1c1c1c] bg-[#1c1c1c] sm:grid-cols-3">
+            {/* rin HUD stat cards — replaces the old Tailwind stat grid.
+                Each fact becomes a rin-hud card with label + value. */}
+            <div className="rin-hud-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '16px', marginTop: '34px' }}>
               {HERO_FACTS.map((fact) => (
-                <div className="min-w-0 bg-[#0b0b0b] px-[18px] py-4" key={fact.label}>
-                  <dt className="font-[family-name:var(--font-dm-mono)] text-[9px] uppercase leading-[1.5] tracking-[0.14em] text-[#858582]">
-                    {fact.label}
-                  </dt>
-                  <dd className="mt-[9px] text-[1.9rem] font-semibold leading-none tracking-[-0.04em] text-[#ff6b00]">
+                <div className="rin-hud" key={fact.label} data-rin-reveal data-rin-i="0">
+                  <p className="rin-hud-label">{fact.label}</p>
+                  <p className="rin-hud-title" style={{ fontSize: 'clamp(1.5rem, 3vw, 2.5rem)', fontWeight: 700, marginTop: '8px' }}>
                     {fact.value}
-                  </dd>
+                  </p>
                 </div>
               ))}
-            </dl>
+            </div>
 
-            <div className="hero-actions">
-              <a className="button button-primary w-full sm:w-auto" href="#projects">
+            {/* rin cut-buttons — replaces the old Tailwind buttons. */}
+            <div className="hero-actions" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginTop: '32px' }}>
+              <a className="rin-cut-btn rin-cut-btn-solid" href="#projects">
                 [ Explore My Data ]
               </a>
-              <a
-                className="button button-download w-full sm:w-auto"
-                href="/resume.pdf"
-                download
-              >
+              <a className="rin-cut-btn" href="/resume.pdf" download>
                 [ Download CV ]
               </a>
             </div>

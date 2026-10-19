@@ -4,7 +4,7 @@ import MotionSection from "../MotionSection"
 
 export default function AboutSection() {
   return (
-          <MotionSection className="about" id="about" aria-labelledby="about-title">
+          <MotionSection className="about rin-tone-ink" id="about" aria-labelledby="about-title">
         <div className="about-inner">
           <div className="about-visual">
             <div className="portrait-frame" aria-label="Holographic portrait of Heng Sengthay">
@@ -72,6 +72,26 @@ export default function AboutSection() {
             Complex data architectures is engineered quietly.
             allowing reliable insights to define success.
             </p>
+
+            {/* rin HUD stat cards — key facts about Thay */}
+            <div className="rin-hud-grid" style={{ marginTop: '32px' }}>
+              <div className="rin-hud">
+                <p className="rin-hud-label">Year</p>
+                <p className="rin-hud-title" style={{ fontSize: 'clamp(1.5rem, 3vw, 2.5rem)', fontWeight: 700, marginTop: '8px' }}>Y3</p>
+              </div>
+              <div className="rin-hud">
+                <p className="rin-hud-label">Programme</p>
+                <p className="rin-hud-title" style={{ fontSize: 'clamp(1.5rem, 3vw, 2.5rem)', fontWeight: 700, marginTop: '8px' }}>Data Science & Engineering</p>
+              </div>
+              <div className="rin-hud">
+                <p className="rin-hud-label">University</p>
+                <p className="rin-hud-title" style={{ fontSize: 'clamp(1.5rem, 3vw, 2.5rem)', fontWeight: 700, marginTop: '8px' }}>RUPP</p>
+              </div>
+              <div className="rin-hud">
+                <p className="rin-hud-label">Focus</p>
+                <p className="rin-hud-title" style={{ fontSize: 'clamp(1.5rem, 3vw, 2.5rem)', fontWeight: 700, marginTop: '8px' }}>Time-Series & Dashboards</p>
+              </div>
+            </div>
           </div>
         </div>
       </MotionSection>

@@ -79,6 +79,11 @@ export const featuredProjects = [
     strategy: "Built a clean 132-row monthly series (2015-2025) and ran time-plot, seasonal and seasonal-subseries analysis.",
     vision: "Pinned the extremes: 703.62 mm in June 2020 and 0.34 mm in December 2019, across 15,689.7 mm total.",
     stack: "PYTHON / JUPYTER / TIME SERIES",
+    metrics: [
+      { label: "Rows analysed", value: "132" },
+      { label: "Total rainfall", value: "15,689.7 mm" },
+      { label: "Wet season share", value: "78%" },
+    ],
   },
   {
     index: "02",
@@ -90,6 +95,11 @@ export const featuredProjects = [
     strategy: "Building an interactive map that pairs a farmer's location with a live weather lookup and crop dictionary.",
     vision: "Next: real NASA POWER climate data, crop-soil scoring, and offline mode for low-connectivity farms.",
     stack: "PYTHON / STREAMLIT / FOLIUM",
+    metrics: [
+      { label: "Provinces mapped", value: "25" },
+      { label: "Crop types", value: "12" },
+      { label: "Data sources", value: "3 APIs" },
+    ],
   },
   {
     index: "03",
@@ -101,6 +111,11 @@ export const featuredProjects = [
     strategy: "Built a 5-page dashboard with course and risk filters, attendance and score sliders, and CSV export.",
     vision: "A reusable monitoring interface. Runs on a small sample dataset today - real data is the next step.",
     stack: "PYTHON / STREAMLIT / PANDAS",
+    metrics: [
+      { label: "Dashboard pages", value: "5" },
+      { label: "Risk filters", value: "4" },
+      { label: "Export formats", value: "CSV" },
+    ],
   },
 ] as const
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, RefObject } from "react";
 
 /**
  * useRinReveal — fades `[data-rin-reveal]` elements in as they scroll into view.
@@ -21,12 +21,14 @@ import { useEffect } from "react";
  *   `document.body` makes two consumers fight over the same class: the first
  *   to unmount would strip `rin-reveal-ready` out from under the other.
  */
-export function useRinReveal(root?: Element | null) {
+export function useRinReveal(root?: RefObject<Element | null> | Element | null) {
   useEffect(() => {
+    // Read the element from ref if a ref is passed
+    const rootElement = root && "current" in root ? root.current : root;
     // Fall back to the document when no container is supplied, so the default
     // is still a complete page rather than an empty query.
-    const scope: ParentNode = root ?? document;
-    const container: Element = root ?? document.body;
+    const scope: ParentNode = rootElement ?? document;
+    const container: Element = rootElement ?? document.body;
 
     const nodes = Array.from(
       scope.querySelectorAll<HTMLElement>("[data-rin-reveal]"),
@@ -74,7 +76,7 @@ export function useRinReveal(root?: Element | null) {
         });
       },
       {
-        root: root ?? null,
+        root: rootElement ?? null,
         // Delay the trigger until the element is genuinely near the fold.
         rootMargin: "0px 0px -10% 0px",
         threshold: 0,

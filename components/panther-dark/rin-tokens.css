@@ -85,6 +85,20 @@
 }
 
 /* --------------------------------------------------------------------------
+   2b. Dark theme — global token override via [data-theme="dark"]
+   Applied to <html> by the theme toggle. This provides a true dark mode
+   for the rin design system, separate from the existing Black Panther dark theme.
+   -------------------------------------------------------------------------- */
+[data-theme="dark"] {
+  --rin-paper: #0b1026;
+  --rin-ink: #eef3f4;
+  --rin-ink-soft: #aab3cf;
+  --rin-teal: #ffd43b;
+  --rin-yellow: #ffd43b;
+  --rin-rule: #eef3f433;
+}
+
+/* --------------------------------------------------------------------------
    3. Display font class — condensed, uppercase, tight
    -------------------------------------------------------------------------- */
 .rin-cond {
@@ -145,6 +159,36 @@
 }
 
 /* --------------------------------------------------------------------------
+   4b. Theme toggle button
+   -------------------------------------------------------------------------- */
+.rin-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  color: var(--rin-ink-soft);
+  border: 1px solid var(--rin-rule);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--rin-paper) 85%, transparent);
+  transition:
+    color var(--rin-dur-fast),
+    border-color var(--rin-dur-fast),
+    background-color var(--rin-dur-fast);
+}
+
+.rin-theme-toggle:hover {
+  color: var(--rin-teal);
+  border-color: var(--rin-teal);
+  background: color-mix(in srgb, var(--rin-teal) 12%, var(--rin-paper) 88%);
+}
+
+.rin-theme-toggle:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--rin-teal);
+}
+
+/* --------------------------------------------------------------------------
    5. HUD card — corner brackets drawn with layered linear-gradients
    -------------------------------------------------------------------------- */
 .rin-hud {
@@ -196,6 +240,23 @@
   line-height: 1.4;
   text-transform: uppercase;
   letter-spacing: 0.03em;
+}
+
+/* Grid utility for rin-hud cards — responsive 1/2/3 columns */
+.rin-hud-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 640px) {
+  .rin-hud-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .rin-hud-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 /* --------------------------------------------------------------------------
