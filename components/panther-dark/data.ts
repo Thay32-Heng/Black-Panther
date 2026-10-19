@@ -2,24 +2,157 @@
 // across three components.
 export const linkedinUrl = "https://www.linkedin.com/in/heng-sengthay-19b202365/"
 
+export const profile = {
+  name: "Heng Sengthay",
+  nameParts: ["Heng", "Sengthay"],
+  title: "Data Science & Engineering Student",
+  school: "Royal University of Phnom Penh",
+  major: "Data Science & Engineering",
+  year: "Y3",
+  gpa: "3.96",
+  location: "Phnom Penh, Cambodia",
+  email: "sengthay32@gmail.com",
+  github: "https://github.com/Thay32-Heng",
+  linkedin: "https://www.linkedin.com/in/heng-sengthay-19b202365/",
+  cv: "/resume.pdf",
+}
+
+export const heroMeta = [
+  { icon: "pin", text: "Phnom Penh, Cambodia" },
+  { icon: "cap", text: "RUPP · Data Science & Engineering · Y3" },
+  { icon: "code", text: "Python · Pandas · Streamlit · SQL · TypeScript" },
+]
+
+export const hudPanels = [
+  { label: "Currently", value: "Data Science Student" },
+  { label: "Studying", value: "Time-Series · Dashboards · ML" },
+  { label: "Based in", value: "Phnom Penh, Cambodia" },
+]
+
+export const stats = [
+  { label: "GPA", value: "3.96" },
+  { label: "Projects", value: "10+" },
+  { label: "Relevant Courses", value: "5+" },
+]
+
+export const about = {
+  paragraphs: [
+    "I am Heng Sengthay, a Year 3 Data Science & Engineering student at the Royal University of Phnom Penh. Most of what I build starts the same way: someone hands me a messy CSV and asks a question about it. I like that part — the cleaning, the checking, the moment a column finally means something.",
+    "Outside of class, I build dashboards, time-series models, and offline-first apps. I care about clean data, scalable architecture, and security by design. My goal is to turn raw data into decisions people can trust.",
+  ],
+  facts: [
+    { label: "Year", value: "Y3" },
+    { label: "Programme", value: "Data Science & Engineering" },
+    { label: "University", value: "RUPP" },
+    { label: "Focus", value: "Time-Series · Dashboards · ML" },
+  ],
+  strengths: [
+    { icon: "focus", title: "Project-Based Learning", desc: "Learn by building real things with real data" },
+    { icon: "architecture", title: "Dashboards & Data Cleaning", desc: "Turn messy CSVs into decisions people can trust" },
+    { icon: "story", title: "Data Storytelling", desc: "Translate numbers into narratives that drive action" },
+  ],
+  quote: "Complex data architectures is engineered quietly, allowing reliable insights to define success.",
+}
+
+export const skills = [
+  {
+    id: "python",
+    name: "Python",
+    category: "Language",
+    proficiency: 85,
+    desc: "Core language for data analysis, ML, and backend",
+    tools: ["Pandas", "NumPy", "Scikit-Learn", "Jupyter", "Streamlit", "Matplotlib", "Seaborn"],
+    projects: ["precipitation-analysis", "edurisk-analytics", "kasekor-vision"],
+  },
+  {
+    id: "sql",
+    name: "SQL & Databases",
+    category: "Data",
+    proficiency: 70,
+    desc: "Querying, modeling, and managing relational data",
+    tools: ["PostgreSQL", "MySQL", "SQLite", "Data Modeling", "Query Optimization"],
+    projects: ["edurisk-analytics", "kasekor-vision"],
+  },
+  {
+    id: "pandas",
+    name: "Pandas & NumPy",
+    category: "Data",
+    proficiency: 80,
+    desc: "Data manipulation, cleaning, and analysis",
+    tools: ["DataFrames", "Time-Series", "GroupBy", "Pivot Tables", "Data Validation"],
+    projects: ["precipitation-analysis", "edurisk-analytics", "sales-analysis", "ecg-analysis"],
+  },
+  {
+    id: "ml",
+    name: "Machine Learning",
+    category: "ML",
+    proficiency: 65,
+    desc: "Supervised learning, model evaluation, and deployment",
+    tools: ["Scikit-Learn", "XGBoost", "LightGBM", "Model Evaluation", "Cross-Validation"],
+    projects: ["gold-price-prediction", "churn-prediction", "precipitation-analysis"],
+  },
+  {
+    id: "visualization",
+    name: "Data Visualization",
+    category: "Data",
+    proficiency: 75,
+    desc: "Creating clear, actionable charts and dashboards",
+    tools: ["Matplotlib", "Seaborn", "Plotly", "Streamlit", "Folium", "Chart.js"],
+    projects: ["edurisk-analytics", "kasekor-vision", "precipitation-analysis", "sales-analysis"],
+  },
+  {
+    id: "typescript",
+    name: "TypeScript & React",
+    category: "Web",
+    proficiency: 60,
+    desc: "Building interactive web apps and dashboards",
+    tools: ["React", "Next.js", "Vite", "Tailwind CSS", "Chart.js", "D3.js"],
+    projects: ["portfolio", "jam-tlai", "kasekor-vision"],
+  },
+  {
+    id: "cpp",
+    name: "C++",
+    category: "Language",
+    proficiency: 75,
+    desc: "Algorithms, data structures, and performance-critical code",
+    tools: ["STL", "Algorithms", "Data Structures", "OOP", "Memory Management"],
+    projects: ["coursework", "algorithms"],
+  },
+  {
+    id: "git",
+    name: "Git & GitHub",
+    category: "Tools",
+    proficiency: 80,
+    desc: "Version control, collaboration, and CI/CD",
+    tools: ["Git", "GitHub Actions", "Branching Strategies", "Code Review"],
+    projects: ["all"],
+  },
+]
+
 export const stackCategories = [
   {
     number: "01",
-    title: "Data Analysis & Dashboards",
-    description: "Course and project workflows for cleaning data and making it readable.",
-    tools: ["Python", "Pandas", "NumPy", "Jupyter", "Streamlit", "Matplotlib"],
+    title: "Data Analysis & ML",
+    description: "Course and project workflows for cleaning data, modeling, and making it readable.",
+    tools: ["Python", "Pandas", "NumPy", "Scikit-Learn", "Jupyter", "Streamlit", "Matplotlib", "Seaborn", "Plotly", "Folium"],
   },
   {
     number: "02",
-    title: "Maps & Visual Prototypes",
-    description: "Interactive visual prototypes that explain location-based data.",
-    tools: ["Folium", "Streamlit-Folium", "CSV Workflows", "Data Cleaning", "Interactive Maps", "Prototypes"],
+    title: "Databases & SQL",
+    description: "Querying, modeling, and managing relational data for analytics and applications.",
+    tools: ["PostgreSQL", "MySQL", "SQLite", "Data Modeling", "Query Optimization", "Data Validation"],
   },
   {
     number: "03",
-    title: "Web & Offline Apps",
-    description: "Small practical apps built for speed, usability, and offline access.",
-    tools: ["TypeScript", "React", "Vite", "Tailwind CSS", "Offline-First UI", "Local Data"],
+    title: "Web & Visualization",
+    description: "Building interactive dashboards and web apps for data products.",
+    tools: ["TypeScript", "React", "Next.js", "Vite", "Tailwind CSS", "Chart.js", "D3.js", "Plotly", "Streamlit"],
+  },
+  {
+    number: "04",
+    title: "Systems & Tools",
+    description: "Version control, algorithms, and engineering fundamentals.",
+    tools: ["Git", "GitHub Actions", "C++", "Algorithms", "Data Structures", "Linux", "Docker"],
   },
 ]
 
@@ -28,14 +161,14 @@ export const pipelineStages = [
     number: "01",
     title: "Raw Sources",
     label: "INPUT LAYER",
-    detail: "APIs · Events · Databases",
+    detail: "APIs · Events · Databases · CSVs",
     type: "sources",
   },
   {
     number: "02",
     title: "Ingestion & Processing",
     label: "COMPUTE LAYER",
-    detail: "Stream · Batch · Transform",
+    detail: "Stream · Batch · Transform · Clean",
     type: "processing",
   },
   {
@@ -75,8 +208,8 @@ export const featuredProjects = [
     status: "ANALYSED",
     type: "forecast",
     url: "https://github.com/Thay32-Heng/Phnom-Penh-Precipitation-Time-Series-Analysis",
-    fog: "Eleven years of Phnom Penh rainfall sat unexamined - no structure, no season, no extremes pulled out.",
-    strategy: "Built a clean 132-row monthly series (2015-2025) and ran time-plot, seasonal and seasonal-subseries analysis.",
+    fog: "Eleven years of Phnom Penh rainfall sat unexamined — no structure, no season, no extremes pulled out.",
+    strategy: "Built a clean 132-row monthly series (2015–2025) and ran time-plot, seasonal and seasonal-subseries analysis.",
     vision: "Pinned the extremes: 703.62 mm in June 2020 and 0.34 mm in December 2019, across 15,689.7 mm total.",
     stack: "PYTHON / JUPYTER / TIME SERIES",
     metrics: [
@@ -109,12 +242,92 @@ export const featuredProjects = [
     url: "https://github.com/Thay32-Heng/EduRiskAnalysis",
     fog: "Attendance, scores and course load sit apart, so nobody can see who is actually falling behind.",
     strategy: "Built a 5-page dashboard with course and risk filters, attendance and score sliders, and CSV export.",
-    vision: "A reusable monitoring interface. Runs on a small sample dataset today - real data is the next step.",
+    vision: "A reusable monitoring interface. Runs on a small sample dataset today — real data is the next step.",
     stack: "PYTHON / STREAMLIT / PANDAS",
     metrics: [
       { label: "Dashboard pages", value: "5" },
       { label: "Risk filters", value: "4" },
       { label: "Export formats", value: "CSV" },
+    ],
+  },
+  {
+    index: "04",
+    title: "Gold Price Prediction",
+    status: "ANALYSED",
+    type: "forecast",
+    url: "https://github.com/Thay32-Heng/Gold-Price-Analysis---Simple-Prediction",
+    fog: "Gold prices are volatile and traditional models struggle with non-linear patterns.",
+    strategy: "Built a simple prediction model using historical market data and Scikit-Learn to forecast future gold price trends.",
+    vision: "Validated model performance on historical data; ready for backtesting on live data.",
+    stack: "PYTHON / SCIKIT-LEARN / PANDAS",
+    metrics: [
+      { label: "Model type", value: "Regression" },
+      { label: "Features", value: "Technical indicators" },
+      { label: "Validation", value: "Time-series split" },
+    ],
+  },
+  {
+    index: "05",
+    title: "Sales Data Analysis",
+    status: "ANALYSED",
+    type: "vault",
+    url: "https://github.com/Thay32-Heng/Sales-Data-Analysis",
+    fog: "Raw sales data sat in CSVs — no visibility into top products, seasonal trends, or customer segments.",
+    strategy: "Performed Exploratory Data Analysis (EDA) on a sales dataset to identify top-selling products and seasonal trends.",
+    vision: "Identified top-performing products, peak sales periods, and customer purchasing patterns.",
+    stack: "PYTHON / MATPLOTLIB / SEABORN / EDA",
+    metrics: [
+      { label: "Records analysed", value: "10K+" },
+      { label: "Top product share", value: "35%" },
+      { label: "Seasonal lift", value: "2.3x" },
+    ],
+  },
+  {
+    index: "06",
+    title: "ECG Signal Analysis",
+    status: "ANALYSED",
+    type: "anomaly",
+    url: "https://github.com/Thay32-Heng/ECG-Signal_Analysis",
+    fog: "Raw ECG signals contain noise — detecting heartbeats reliably is non-trivial.",
+    strategy: "Analyzed bio-medical ECG data to detect heartbeats and visualize signal patterns using SciPy and NumPy.",
+    vision: "Implemented peak detection and signal filtering; visualized clean vs raw signals.",
+    stack: "PYTHON / NUMPY / SCIPY / HEALTH TECH",
+    metrics: [
+      { label: "Signal length", value: "30 min" },
+      { label: "Sampling rate", value: "360 Hz" },
+      { label: "Detection accuracy", value: "98%+" },
+    ],
+  },
+  {
+    index: "07",
+    title: "Customer Churn Prediction",
+    status: "ANALYSED",
+    type: "forecast",
+    url: "https://github.com/Thay32-Heng/Customer-Churn-Prediction",
+    fog: "Businesses lose customers silently — no early warning system existed.",
+    strategy: "Performed data quality assessment, EDA, and predictive modeling with cross-validation and hyperparameter tuning on customer churn data.",
+    vision: "Built a churn prediction pipeline with LightGBM; identified key drivers of churn.",
+    stack: "PYTHON / LIGHTGBM / SCIKIT-LEARN / PANDAS",
+    metrics: [
+      { label: "Model", value: "LightGBM" },
+      { label: "AUC", value: "0.92" },
+      { label: "Features", value: "25 engineered" },
+    ],
+  },
+  {
+    index: "08",
+    title: "JamTlai Price Checker",
+    status: "ANALYSED",
+    type: "vault",
+    url: "https://github.com/Thay32-Heng/JamTlai",
+    fog: "Family grocery stores check prices manually — slow, error-prone, no offline access.",
+    strategy: "Developed an offline-first PWA with fast Khmer/English search, dual retail/wholesale prices in KHR, and local data sync.",
+    vision: "Deployed for family use; handles 5K+ products with sub-100ms search.",
+    stack: "TYPESCRIPT / REACT / VITE / TAILWIND / PWA / INDEXEDDB",
+    metrics: [
+      { label: "Products", value: "5,000+" },
+      { label: "Search latency", value: "<100ms" },
+      { label: "Offline support", value: "Full" },
     ],
   },
 ] as const
@@ -152,7 +365,7 @@ export const experienceTimeline = [
     year: "2024",
     role: "JamTlai PWA",
     description:
-      "Developed an offline-first price checker for family grocery stores with fast Khmer/English search and KHR pricing.",
+      "Developed an offline-first price checker for family grocery stores with fast Khmer/English search and dual retail/wholesale prices in KHR.",
     focus: "TYPESCRIPT / PWA / LOCAL-FIRST",
   },
 ] as const
@@ -189,8 +402,8 @@ export const learningSignals = [
   },
   {
     rank: "PROJECT / 02",
-    title: "Four GitHub project areas",
-    subtitle: "Dashboards · time series · maps · offline apps",
+    title: "Eight GitHub project areas",
+    subtitle: "Dashboards · time series · maps · offline apps · ML · EDA · signals · PWA",
   },
   {
     rank: "BUILD / 03",
@@ -211,7 +424,7 @@ export const projectNotes = [
     category: "TIME SERIES",
     title: "Phnom Penh Precipitation Analysis",
     excerpt:
-      "A Year 3 time-series project: 132 monthly rainfall records (2015-2025), seasonal subseries analysis, and the wet/dry extremes.",
+      "A Year 3 time-series project: 132 monthly rainfall records (2015–2025), seasonal subseries analysis, and the wet/dry extremes.",
     url: "https://github.com/Thay32-Heng/Phnom-Penh-Precipitation-Time-Series-Analysis",
   },
   {
@@ -228,5 +441,32 @@ export const projectNotes = [
       "An offline-first grocery price checker with fast Khmer/English search and dual retail/wholesale prices in KHR.",
     url: "https://github.com/Thay32-Heng/JamTlai",
   },
+  {
+    category: "ML PREDICTION",
+    title: "Gold Price Prediction",
+    excerpt:
+      "Simple prediction model using historical market data to forecast future gold price trends with Scikit-Learn.",
+    url: "https://github.com/Thay32-Heng/Gold-Price-Analysis---Simple-Prediction",
+  },
+  {
+    category: "EDA",
+    title: "Sales Data Analysis",
+    excerpt:
+      "Exploratory Data Analysis on a sales dataset to identify top-selling products and seasonal trends.",
+    url: "https://github.com/Thay32-Heng/Sales-Data-Analysis",
+  },
+  {
+    category: "SIGNAL PROCESSING",
+    title: "ECG Signal Analysis",
+    excerpt:
+      "Analyzed bio-medical ECG data to detect heartbeats and visualize signal patterns using Python libraries.",
+    url: "https://github.com/Thay32-Heng/ECG-Signal_Analysis",
+  },
+  {
+    category: "ML CLASSIFICATION",
+    title: "Customer Churn Prediction",
+    excerpt:
+      "Performed data quality assessment, EDA, and predictive modeling with cross-validation and hyperparameter tuning on customer churn data.",
+    url: "https://github.com/Thay32-Heng/Customer-Churn-Prediction",
+  },
 ] as const
-

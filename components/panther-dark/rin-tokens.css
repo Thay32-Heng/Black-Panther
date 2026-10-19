@@ -161,7 +161,7 @@
 /* --------------------------------------------------------------------------
    4b. Theme toggle button
    -------------------------------------------------------------------------- */
-.rin-theme-toggle {
+.rin-theme-toggle, .theme-toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -177,13 +177,13 @@
     background-color var(--rin-dur-fast);
 }
 
-.rin-theme-toggle:hover {
+.rin-theme-toggle:hover, .theme-toggle:hover {
   color: var(--rin-teal);
   border-color: var(--rin-teal);
   background: color-mix(in srgb, var(--rin-teal) 12%, var(--rin-paper) 88%);
 }
 
-.rin-theme-toggle:focus-visible {
+.rin-theme-toggle:focus-visible, .theme-toggle:focus-visible {
   outline: none;
   box-shadow: inset 0 0 0 2px var(--rin-teal);
 }
