@@ -1,4 +1,5 @@
 import ClusterLab from "../ClusterLab"
+import ProjectTable from "../ProjectTable"
 import MotionSection from "../MotionSection"
 
 /**
@@ -19,7 +20,7 @@ export default function ClusterLabSection() {
       <div className="rin-lab-inner">
         <header className="rin-lab-heading">
           <p className="rin-lab-overline">/ Run it yourself</p>
-          <h2 className="rin-cond" id="lab-title">
+          <h2 id="lab-title">
             K-means, with the lid off.
           </h2>
           <p className="rin-lab-intro">
@@ -38,6 +39,16 @@ export default function ClusterLabSection() {
           real groups — inertia keeps dropping, which is exactly the trap
           accuracy alone will not catch.
         </p>
+
+        <div className="rin-lab-table-block">
+          <h3 className="rin-lab-subtitle">The same eight projects, as a table.</h3>
+          <p className="rin-lab-subnote">
+            A card reads well one at a time; a table lets you compare. Sort by
+            any column — the counts are pulled from the project data, not typed
+            in by hand.
+          </p>
+          <ProjectTable />
+        </div>
       </div>
     </MotionSection>
   )

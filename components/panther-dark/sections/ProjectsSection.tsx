@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 import { featuredProjects } from "../data"
 import { ProjectVisual } from "../ProjectVisual"
 
@@ -8,11 +10,11 @@ export default function ProjectsSection() {
         <div className="projects-inner">
           <header className="projects-heading">
             <p className="projects-overline">/ Projects with public code</p>
-            <h2 id="projects-title">Three projects, and what each one found.</h2>
+            <h2 id="projects-title">Eight projects, and what each one found.</h2>
             <p className="projects-intro">
               Every card states the problem, what I actually did, and the result
               the data gave. The status label is honest about how finished each
-              one is.
+              one is. Open a case study for the full write-up.
             </p>
           </header>
 
@@ -69,6 +71,26 @@ export default function ProjectsSection() {
                   </div>
 
                   <div className="project-actions">
+                    <Link
+                      className="rin-cut-btn rin-cut-btn-solid"
+                      href={`/project/${project.slug}`}
+                    >
+                      Case Study
+                      <svg
+                        aria-hidden="true"
+                        viewBox="0 0 24 24"
+                        width="14"
+                        height="14"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="M12 5l7 7-7 7" />
+                      </svg>
+                    </Link>
                     <a
                       className="rin-cut-btn"
                       href={project.url}

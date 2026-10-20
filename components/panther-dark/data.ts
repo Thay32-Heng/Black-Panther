@@ -204,6 +204,7 @@ export type ChartPeriod = keyof typeof chartSeries
 export const featuredProjects = [
   {
     index: "01",
+    slug: "phnom-penh-precipitation-analysis",
     title: "Phnom Penh Precipitation Analysis",
     status: "ANALYSED",
     type: "forecast",
@@ -220,6 +221,7 @@ export const featuredProjects = [
   },
   {
     index: "02",
+    slug: "kasekor-vision",
     title: "Kasekor Vision",
     status: "ACTIVE BUILD",
     type: "vault",
@@ -236,6 +238,7 @@ export const featuredProjects = [
   },
   {
     index: "03",
+    slug: "edurisk-analytics",
     title: "EduRisk Analytics",
     status: "LAB BUILD",
     type: "anomaly",
@@ -252,6 +255,7 @@ export const featuredProjects = [
   },
   {
     index: "04",
+    slug: "gold-price-prediction",
     title: "Gold Price Prediction",
     status: "ANALYSED",
     type: "forecast",
@@ -268,6 +272,7 @@ export const featuredProjects = [
   },
   {
     index: "05",
+    slug: "sales-data-analysis",
     title: "Sales Data Analysis",
     status: "ANALYSED",
     type: "vault",
@@ -284,6 +289,7 @@ export const featuredProjects = [
   },
   {
     index: "06",
+    slug: "ecg-signal-analysis",
     title: "ECG Signal Analysis",
     status: "ANALYSED",
     type: "anomaly",
@@ -300,6 +306,7 @@ export const featuredProjects = [
   },
   {
     index: "07",
+    slug: "customer-churn-prediction",
     title: "Customer Churn Prediction",
     status: "ANALYSED",
     type: "forecast",
@@ -316,6 +323,7 @@ export const featuredProjects = [
   },
   {
     index: "08",
+    slug: "jamtlai-price-checker",
     title: "JamTlai Price Checker",
     status: "ANALYSED",
     type: "vault",

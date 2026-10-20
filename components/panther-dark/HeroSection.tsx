@@ -166,7 +166,7 @@ export default function HeroSection() {
               id="hero-title"
               className="hero-title text-4xl md:text-6xl lg:text-[clamp(3rem,5vw,5.5rem)] lg:leading-[1.02]"
             >
-              Heng
+              Heng{" "}
               <br className="hidden lg:block" />
               <em className="hero-title-em">Sengthay.</em>
             </h1>

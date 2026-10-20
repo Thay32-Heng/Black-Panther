@@ -379,3 +379,37 @@
     transition: none;
   }
 }
+/* --------------------------------------------------------------------------
+   9. Header fit on phones
+   --------------------------------------------------------------------------
+   Phase B added the theme toggle to the header row. At 390px the row ran out
+   of space: the menu button landed at x=391 — entirely off-screen — and was
+   squeezed from its intended 48px down to 22px. Phones therefore had no way
+   to open the navigation at all.
+
+   The availability chip is the one item that can go: the hero shows the same
+   "Open to internships" chip immediately below, so nothing is lost. The menu
+   button then gets its full width back and stays inside the viewport.
+   -------------------------------------------------------------------------- */
+@media (max-width: 1023px) {
+  .site-header .nav-toggle {
+    flex-shrink: 0;
+    width: 48px;
+  }
+}
+
+@media (max-width: 639px) {
+  .site-header .availability {
+    display: none;
+  }
+}
+
+/* The hero name is two words. Below lg the <br> that separates them is
+   display:none, so the only thing between "Heng" and "Sengthay" is a space —
+   and the headline's -0.055em letter-spacing eats almost all of it, so the
+   name read as one word: "HengSengthay." Give the gap back explicitly. */
+@media (max-width: 1023px) {
+  .hero-title {
+    word-spacing: 0.22em;
+  }
+}

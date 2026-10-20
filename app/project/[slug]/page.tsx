@@ -7,9 +7,19 @@ interface ProjectPageProps {
   params: Promise<{ slug: string }>
 }
 
+/**
+ * The eight case studies are a fixed list, so they prerender at build time
+ * instead of being rendered on demand. `dynamicParams` stays at its default,
+ * which means a slug that is not in this list still reaches the page and is
+ * turned into a real 404 by `notFound()`.
+ */
+export async function generateStaticParams() {
+  return featuredProjects.map((project) => ({ slug: project.slug }))
+}
+
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
   const { slug } = await params
-  const project = featuredProjects.find((p) => p.url.split("/").pop() === slug || p.title.toLowerCase().replace(/\s+/g, "-") === slug)
+  const project = featuredProjects.find((p) => p.slug === slug)
 
   if (!project) {
     return { title: "Project Not Found" }
@@ -26,13 +36,9 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   }
 }
 
-function formatSlug(title: string): string {
-  return title.toLowerCase().replace(/\s+/g, "-")
-}
-
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params
-  const project = featuredProjects.find((p) => formatSlug(p.title) === slug)
+  const project = featuredProjects.find((p) => p.slug === slug)
 
   if (!project) {
     notFound()
@@ -107,15 +113,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             >
               <svg className="w-5 h-5" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.15c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.25 3.33.96.1-.74.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.16 1.18a10.94 10.94 0 0 1 5.77 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.76.12 3.05.73.81 1.17 1.84 1.17 3.1 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.15v3.19c0 .3.21.66.8.55A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
               View Code
-            </a>
-            <a
-              href={`https://github.com/Thay32-Heng/${formatSlug(project.title)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rin-cut-btn"
-            >
-              <svg className="w-5 h-5" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline d="M15 3h6v6"/><line x1="15" y1="3" x2="21" y2="9"/></svg>
-              Repository
             </a>
           </div>
         </section>
