@@ -58,12 +58,21 @@ function advance(run: Run): Run {
   }
 }
 
+// SVG coordinates are rounded to 3 decimals on purpose. The same seeded point
+// cloud is computed twice — once by Node on the server, once by Chrome in the
+// browser — and the two V8 builds can disagree in the last bit of a float,
+// which React reports as a hydration mismatch on cx/cy. Three decimals is
+// 1/1000 of a unit in a 620-unit viewBox, far below one device pixel.
+function round3(value: number): number {
+  return Math.round(value * 1000) / 1000
+}
+
 function plotX(value: number): number {
-  return PAD + value * PLOT
+  return round3(PAD + value * PLOT)
 }
 
 function plotY(value: number): number {
-  return PAD + (1 - value) * PLOT
+  return round3(PAD + (1 - value) * PLOT)
 }
 
 function formatInertia(value: number): string {

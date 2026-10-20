@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { rainfallStats } from "./rainfall"
 import Contours from "./Contours"
+import HeroTerrain from "./HeroTerrain"
 import useRinReveal from "./useRinReveal"
 
 // Read from the dataset, not typed by hand, so these can never drift out of
@@ -115,6 +116,12 @@ export default function HeroSection() {
         <Contours />
       </div>
 
+      {/* Hero 3D: the 132 monthly rainfall records as a rotating wireframe
+          surface — 11 years deep, 12 months wide, height in millimetres. Same
+          array the Sandbox chart draws. Sits above the contour lines and below
+          the scrim, so headline contrast is unchanged. */}
+      <HeroTerrain />
+
       {/* Local scrim: keeps the headline readable while the 3D scene animates behind it. */}
       <div
         className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(90deg,rgba(0,0,0,0.74)_0%,rgba(0,0,0,0.36)_42%,rgba(0,0,0,0.08)_66%,transparent_84%)]"
@@ -217,7 +224,13 @@ export default function HeroSection() {
           </div>
 
           <div className="relative flex items-center justify-center">
-            <div className="hero-stage" data-layer={revealed ? "photo" : "emblem"}>
+            {/* rin-hero-stage exists only so the additive stylesheet can give the
+                stage a real height on phones, where both layers are absolutely
+                positioned and the stage would otherwise collapse to 0px. */}
+            <div
+              className="hero-stage rin-hero-stage"
+              data-layer={revealed ? "photo" : "emblem"}
+            >
               <span className="hero-orbit" aria-hidden="true" />
 
               {/* Two layers in exactly the same box. A plain crossfade between

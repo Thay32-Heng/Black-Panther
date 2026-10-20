@@ -1,0 +1,91 @@
+/* Hero 3D terrain — hand-written canvas, zero dependencies.
+   Loaded after the token layer; namespaced so nothing here can reach the
+   hand-tuned Black Panther rules.
+
+   Composition: a holographic data table under the emblem, not a wallpaper. The
+   whole 12 x 11 surface is framed inside this panel, so it reads as one object.
+   A full-bleed layer was tried first and lost — the emblem is the focal point,
+   and a surface behind it just muddied the silhouette. */
+
+.rin-hero-terrain {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 40%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.85;
+
+  /* Fade the panel's own edges so the object has no visible rectangle. */
+  -webkit-mask-image: radial-gradient(
+    78% 88% at 50% 62%,
+    #000 0%,
+    rgba(0, 0, 0, 0.78) 48%,
+    transparent 88%
+  );
+  mask-image: radial-gradient(
+    78% 88% at 50% 62%,
+    #000 0%,
+    rgba(0, 0, 0, 0.78) 48%,
+    transparent 88%
+  );
+}
+
+.rin-hero-terrain-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Desktop: the panel sits under the emblem, in the right-hand column, so the
+   panther reads as standing on the surface rather than floating over it. */
+@media (min-width: 1024px) {
+  .rin-hero-terrain {
+    left: auto;
+    right: 3%;
+    width: 52%;
+    height: 34%;
+    bottom: 2%;
+    opacity: 0.7;
+    -webkit-mask-image: radial-gradient(
+      68% 84% at 50% 55%,
+      #000 0%,
+      rgba(0, 0, 0, 0.55) 48%,
+      transparent 88%
+    );
+    mask-image: radial-gradient(
+      68% 84% at 50% 55%,
+      #000 0%,
+      rgba(0, 0, 0, 0.55) 48%,
+      transparent 88%
+    );
+  }
+}
+
+/* Phones: the hero stacks, so keep a shallow band at the bottom and dim it —
+   the buttons and chips sit directly above. */
+@media (max-width: 1023px) {
+  .rin-hero-terrain {
+    height: 32%;
+    opacity: 0.55;
+  }
+
+  /* Both emblem layers are absolutely positioned inside the stage, so the stage
+     has no intrinsic height and collapses to 0. The artwork is then centred on
+     that zero-height line and bleeds upward over the buttons and the section
+     index — measured at 126px of overlap on a 390px viewport. Giving the stage
+     the artwork's own aspect ratio (342 x 356) makes it occupy real space. */
+  .rin-hero-stage {
+    aspect-ratio: 342 / 356;
+    min-height: 280px;
+  }
+}
+
+/* A static frame is drawn instead of the loop; drop the opacity slightly so a
+   frozen surface never looks like a stalled animation. */
+@media (prefers-reduced-motion: reduce) {
+  .rin-hero-terrain {
+    opacity: 0.6;
+  }
+}
