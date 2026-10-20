@@ -8,6 +8,7 @@ import { linkedinUrl } from "../data"
 const NAV_ITEMS = [
   { label: "About", id: "about" },
   { label: "Projects", id: "projects" },
+  { label: "Lab", id: "lab" },
   { label: "Architecture", id: "architecture" },
   { label: "Experience", id: "experience" },
   { label: "Writing", id: "writing" },

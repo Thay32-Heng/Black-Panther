@@ -5,6 +5,7 @@ import SiteHeader from "./sections/SiteHeader"
 import AboutSection from "./sections/AboutSection"
 import ArchitectureSection from "./sections/ArchitectureSection"
 import SandboxSection from "./sections/SandboxSection"
+import ClusterLabSection from "./sections/ClusterLabSection"
 import ProjectsSection from "./sections/ProjectsSection"
 import ExperienceSection from "./sections/ExperienceSection"
 import PhilosophySection from "./sections/PhilosophySection"
@@ -21,6 +22,7 @@ export default function PantherDarkHome() {
       <AboutSection />
       <ArchitectureSection />
       <SandboxSection />
+      <ClusterLabSection />
       <ProjectsSection />
       <ExperienceSection />
       <PhilosophySection />
